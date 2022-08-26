@@ -3,7 +3,6 @@ import { Brand } from '@brand';
 import { IdSiteDto, SearchDto } from '@dtos';
 import { InscriptionService } from '@inscription';
 import { MessageI, PaginatorI } from '@interfaces';
-import { Like } from '@like';
 import { UtilsService, Logger } from '@services';
 import { VoteService } from '@vote';
 import {

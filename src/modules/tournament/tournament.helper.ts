@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { InscriptionI, InscriptionService } from '@inscription';
-import { RoundService, RoundI, RoundMongoI, roundsTypes } from '@round';
+import { RoundService, RoundI, RoundMongoI, roundsTypes, Round } from '@round';
 import { PairingService, PairingMongoI, PairingI, Pairing } from '@pairing';
 import { CarI } from '@car';
 import {
@@ -10,7 +10,6 @@ import {
   TournamentForceNextRoundDto,
 } from '@tournament';
 import { Winner } from '@winner';
-import { Round } from '@round';
 import { IdSiteDto } from '@dtos';
 import { Logger } from '@services';
 import { CacheService } from '@cache';

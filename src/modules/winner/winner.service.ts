@@ -1,7 +1,6 @@
-import { Logger } from '@services';
 import { GetAllDto } from '@dtos';
 import { MessageI, PaginatorI } from '@interfaces';
-import { UtilsService } from '@services';
+import { UtilsService, Logger } from '@services';
 import { Vote } from '@vote';
 import {
   Winner,
@@ -210,40 +209,6 @@ export class WinnerService {
         return item.gold.length + item.silver.length + item.bronze.length > 0;
       });
       return filteredItems;
-
-      // find is winner with car and separate for gold silver and bronze
-
-      // const gold: any = []
-      // const silver: any = []
-      // const bronze: any = []
-      // winners.forEach(winner => {
-      //     if (winner.gold && cars.find(car => car._id.toString() === winner.gold._id.toString())) {
-      //         const item = {
-      //             tournament: winner.tournament,
-      //             car: winner.gold,
-      //         }
-      //         gold.push(item)
-      //     }
-      //     if (winner.silver && cars.find(car => car._id.toString() === winner.silver._id.toString())) {
-      //         const item = {
-      //             tournament: winner.tournament,
-      //             car: winner.silver,
-      //         }
-      //         silver.push(item)
-      //     }
-      //     if (winner.bronze && cars.find(car => car._id.toString() === winner.bronze._id.toString())) {
-      //         const item = {
-      //             tournament: winner.tournament,
-      //             car: winner.bronze,
-      //         }
-      //         bronze.push(item)
-      //     }
-      // })
-      // return {
-      //     gold,
-      //     silver,
-      //     bronze,
-      // }
     } catch (error) {
       return error;
     }
