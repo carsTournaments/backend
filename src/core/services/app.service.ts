@@ -68,7 +68,6 @@ export class AppService {
   }
 
   initStaticRoutes(app: express.Application): void {
-    // app.use(express.json());
     app.use('/uploads', serveIndex(`${this.pathUploads}`));
     app.use(
       '/uploads',
@@ -112,7 +111,7 @@ export class AppService {
   }
 
   createCache() {
-    // this.cacheService.create();
+    this.cacheService.create();
     Logger.info('Cache iniciada');
   }
 }

@@ -261,25 +261,35 @@ export class CarHelper {
     const carType = car[type];
     for (const category of categories) {
       for (let item of category.items) {
-        if (type === 'stock') {
-          item = this.setStockForCarStats(car, item);
-        } else if (type === 'year') {
-          item = this.setYearsForCarStats(car, item);
-        } else if (type === 'cc') {
-          item = this.setCCForCarStats(car, item);
-        } else if (type === 'cv') {
-          item = this.setCVForCarStats(car, item);
-        } else if (type === 'brand') {
-          item = this.setBrandForCarStats(car, item);
-        } else if (type === 'country') {
-          item = this.setCountryForCarStats(car, item);
-        } else if (type === 'continent') {
-          item = this.setContinentForCarStats(car, item);
-        } else {
-          if (item.name === carType) {
-            item.value++;
-          }
+        switch (type) {
+          case 'stock':
+            item = this.setStockForCarStats(car, item);
+            break;
+          case 'year':
+            item = this.setYearsForCarStats(car, item);
+            break;
+          case 'cc':
+            item = this.setCCForCarStats(car, item);
+            break;
+          case 'cv':
+            item = this.setCVForCarStats(car, item);
+            break;
+          case 'brand':
+            item = this.setBrandForCarStats(car, item);
+            break;
+          case 'country':
+            item = this.setCountryForCarStats(car, item);
+            break;
+          case 'continent':
+            item = this.setContinentForCarStats(car, item);
+            break;
+          default:
+            if (item.name === carType) {
+              item.value++;
+            }
+            break;
         }
+
         category.items = category.items.sort(
           (a: any, b: any) => b.value - a.value
         );
@@ -348,12 +358,11 @@ export class CarHelper {
 
   //getOne
   async getOneForUser(
-    item: CarI,
     aggregate: any,
     user: UserTokenI,
     reject: (reason?: any) => void
   ) {
-    item = await this.getOneAggregate(aggregate, reject);
+    const item = await this.getOneAggregate(aggregate, reject);
     if (item) {
       const likes = await Like.find({ car: item._id }).exec();
       const isLiked = likes.find(
