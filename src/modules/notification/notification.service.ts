@@ -1,6 +1,6 @@
 import { GetAllDto } from '@dtos';
 import { MessageI, PaginatorI } from '@interfaces';
-import { UtilsService } from '@services';
+import { UtilsService, Logger } from '@services';
 import { User, UserI } from '@user';
 import {
   NotificationI,
@@ -9,7 +9,6 @@ import {
   notificationGetAllAggregate,
   NotificationUpdateFCMForUserDto,
 } from '@notification';
-import { Logger } from '@services';
 import { Config } from '@core/config';
 
 export class NotificationService {

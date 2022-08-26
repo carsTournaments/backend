@@ -205,9 +205,9 @@ export class VoteService {
     try {
       let total = 0;
       const votes = await Vote.find({}).exec();
-      for (let i = 0; i < votes.length; i++) {
-        if (!votes[i].user && !votes[i].uuid) {
-          await Vote.deleteOne({ _id: votes[i]._id }).exec();
+      for (const vote of votes) {
+        if (!vote.user && !vote.uuid) {
+          await Vote.deleteOne({ _id: vote._id }).exec();
           total++;
         }
       }
