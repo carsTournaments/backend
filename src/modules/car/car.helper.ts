@@ -290,7 +290,7 @@ export class CarHelper {
             break;
         }
 
-        category.items = category.items.sort(
+        category.items.sort(
           (a: any, b: any) => b.value - a.value
         );
       }
@@ -299,9 +299,10 @@ export class CarHelper {
   }
 
   private setStockForCarStats(car: CarI, item: CarStatsItemI) {
-    if (item.name === 'Si' && car.stock) {
-      item.value++;
-    } else if (item.name === 'No' && !car.stock) {
+    if (
+      (item.name === 'Si' && car.stock) ||
+      (item.name === 'No' && !car.stock)
+    ) {
       item.value++;
     }
     return item;
