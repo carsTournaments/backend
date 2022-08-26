@@ -76,20 +76,19 @@ export class SettingsService {
   ): { update: boolean; mandatory: boolean } {
     let update = false;
     let mandatory = false;
-    // check update
-    if (versionApp.versionMajor < versionLatestDB.versionMajor) {
-      update = true;
-    } else if (versionApp.versionMajor === versionLatestDB.versionMajor) {
-      if (versionApp.versionMinor < versionLatestDB.versionMinor) {
-        update = true;
-      } else if (versionApp.versionMinor === versionLatestDB.versionMinor) {
-        if (versionApp.versionPatch < versionLatestDB.versionPatch) {
-          update = true;
-        }
-      }
-    }
+    update = this.checkUpdate(versionApp, versionLatestDB, update);
+    mandatory = this.checkMandatory(versionApp, versionMinDB, mandatory);
+    return {
+      update,
+      mandatory,
+    };
+  }
 
-    // check mandatory
+  private checkMandatory(
+    versionApp: SettingsVersionCodeI,
+    versionMinDB: SettingsVersionCodeI,
+    mandatory: boolean
+  ) {
     if (versionApp.versionMajor < versionMinDB.versionMajor) {
       mandatory = true;
     } else if (versionApp.versionMajor === versionMinDB.versionMajor) {
@@ -101,10 +100,26 @@ export class SettingsService {
         }
       }
     }
-    return {
-      update,
-      mandatory,
-    };
+    return mandatory;
+  }
+
+  private checkUpdate(
+    versionApp: SettingsVersionCodeI,
+    versionLatestDB: SettingsVersionCodeI,
+    update: boolean
+  ) {
+    if (versionApp.versionMajor < versionLatestDB.versionMajor) {
+      update = true;
+    } else if (versionApp.versionMajor === versionLatestDB.versionMajor) {
+      if (versionApp.versionMinor < versionLatestDB.versionMinor) {
+        update = true;
+      } else if (versionApp.versionMinor === versionLatestDB.versionMinor) {
+        if (versionApp.versionPatch < versionLatestDB.versionPatch) {
+          update = true;
+        }
+      }
+    }
+    return update;
   }
 
   async getSettingsApp(data: SettingsAppDto): Promise<SettingsAppI> {
