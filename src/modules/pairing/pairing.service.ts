@@ -1,7 +1,7 @@
 import { UserTokenI } from '@auth';
 import { GetAllDto, IdSiteDto } from '@dtos';
 import { MessageI, PaginatorI } from '@interfaces';
-import { UtilsService } from '@services';
+import { UtilsService, Logger } from '@services';
 import { VoteService } from '@vote';
 import {
   Pairing,
@@ -10,7 +10,6 @@ import {
   pairingGetAllAggregate,
   pairingGetOneAggregate,
 } from '@pairing';
-import { Logger } from '@services';
 
 export class PairingService {
   private voteService = new VoteService();

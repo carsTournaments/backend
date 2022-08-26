@@ -317,7 +317,6 @@ export class InscriptionService {
       result.status = false;
       return result;
     }
-
     for (const requisite of tournament.requisites) {
       if (
         requisite.operator === '>' &&
@@ -330,13 +329,11 @@ export class InscriptionService {
       ) {
         return this.checkValidationsRequisitesFailed(result, requisite);
       } else if (requisite.operator === '=') {
-        if (requisite.field === 'continent') {
-          if (car.brand.continent !== requisite.value) {
-            return this.checkValidationsRequisitesFailed(result, requisite);
-          }
-        } else if (car[requisite.field] !== requisite.value) {
-          return this.checkValidationsRequisitesFailed(result, requisite);
-        }
+        return this.checkValidationsRequisitesFailedSame(
+          result,
+          car,
+          requisite
+        );
       }
     }
     return result;
@@ -353,6 +350,23 @@ export class InscriptionService {
     result.message = defaultMessage;
     result.status = false;
     return result;
+  }
+
+  private checkValidationsRequisitesFailedSame(
+    result: {
+      message: string;
+      status: boolean;
+    },
+    car: any,
+    requisite: TournamentRequisiteI
+  ) {
+    if (requisite.field === 'continent') {
+      if (car.brand.continent !== requisite.value) {
+        return this.checkValidationsRequisitesFailed(result, requisite);
+      }
+    } else if (car[requisite.field] !== requisite.value) {
+      return this.checkValidationsRequisitesFailed(result, requisite);
+    }
   }
 
   async forceInscriptions(tournamentId: string): Promise<MessageI> {

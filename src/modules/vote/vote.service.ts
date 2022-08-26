@@ -1,5 +1,5 @@
 import { MessageI, PaginatorI } from '@interfaces';
-import { UtilsService } from '@services';
+import { UtilsService, Logger } from '@services';
 import { Round } from '@round';
 import {
   VoteI,
@@ -12,7 +12,6 @@ import {
   voteGetAllAggregate,
   VoteCreateFakeVotesDto,
 } from '@vote';
-import { Logger } from '@services';
 import { CacheService } from '@cache';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -145,7 +144,6 @@ export class VoteService {
             totalCreated++;
           }
         } else {
-          //   const aggregate = voteCreateFakeVotesAggregate();
           const rounds = await Round.find({ status: 'InProgress' }).exec();
           for (let i = 0; i < data.total; i++) {
             const random = Math.floor(Math.random() * rounds.length);
