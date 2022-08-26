@@ -348,12 +348,11 @@ export class CarHelper {
 
   //getOne
   async getOneForUser(
-    item: CarI,
     aggregate: any,
     user: UserTokenI,
     reject: (reason?: any) => void
   ) {
-    item = await this.getOneAggregate(aggregate, reject);
+    const item = await this.getOneAggregate(aggregate, reject);
     if (item) {
       const likes = await Like.find({ car: item._id }).exec();
       const isLiked = likes.find(

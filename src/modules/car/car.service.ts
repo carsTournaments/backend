@@ -180,7 +180,6 @@ export class CarService {
             );
           } else {
             item = await this.helper.getOneForUser(
-              item,
               aggregate,
               user,
               reject
@@ -258,12 +257,12 @@ export class CarService {
     try {
       if (force === true) {
         if (user && user.role === 'ADMIN') {
-          return this.deleteOneForce(id);
+          return await this.deleteOneForce(id);
         } else {
-          this.deleteUserCar(id);
+          await this.deleteUserCar(id);
         }
       } else {
-        this.deleteUserCar(id);
+        return await this.deleteUserCar(id);
       }
     } catch (error) {
       return error;

@@ -668,8 +668,6 @@ export class TournamentHelper {
           inscriptions,
           round,
           final,
-          gold,
-          silver
         );
         if (results.gold && results.silver) {
           gold = results.gold;
@@ -678,7 +676,6 @@ export class TournamentHelper {
           inscriptions = results;
         }
       } else {
-        // repite gold y silver
         const result = await this.checkAndSetWinnersOfRoundRandom(
           pairing,
           inscriptions,
@@ -725,11 +722,11 @@ export class TournamentHelper {
     pairing: PairingMongoI,
     inscriptions: InscriptionI[],
     round: RoundI,
-    final: boolean,
-    gold: CarI,
-    silver: CarI
+    final: boolean
   ): Promise<any> {
     try {
+      let gold: CarI;
+      let silver: CarI;
       pairing.winner = pairing[type]._id;
       await pairing.save();
       const inscription: InscriptionI = {

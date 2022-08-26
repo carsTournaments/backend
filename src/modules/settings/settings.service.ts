@@ -14,7 +14,7 @@ export class SettingsService {
   private cacheService = new CacheService();
   async getAll(): Promise<SettingsI> {
     try {
-      const settings = this.getOrSetDefaultSettings();
+      const settings = await this.getOrSetDefaultSettings();
       return settings;
     } catch (error) {
       return error;
