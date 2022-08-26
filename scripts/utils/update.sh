@@ -30,7 +30,7 @@ else
     pm2 stop carsTournaments >/dev/null 2>&1
     PATH_BACKEND="${PATH_APPS_PRO}/carsTournaments-backend"
     echo "🔥  Actualizando backend desde Produccion"
-    cd $PATH_BACKEND && git pull >/dev/null 2>&1
+    cd ${PATH_BACKEND} && git pull >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo "✅  Pull finalizado"
     else
