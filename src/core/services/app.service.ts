@@ -1,0 +1,118 @@
+import compression from 'compression';
+import cors from 'cors';
+import methodOverride from 'method-override';
+import mongoose from 'mongoose';
+import express from 'express';
+import serveIndex from 'serve-index';
+import bodyParser from 'body-parser';
+import promBundle from 'express-prom-bundle';
+import { CrontabService } from '@crontab';
+import { Config } from '@core/config/app.config';
+import { Logger } from './logger.service';
+import { morganMiddleware } from '@middlewares';
+import { CacheService } from '@cache';
+
+export class AppService {
+  private app: express.Application;
+  private pathUploads = Config.paths.uploads;
+  private crontabService = new CrontabService();
+  private cacheService = new CacheService();
+  constructor(app: express.Application) {
+    this.app = app;
+  }
+
+  connectToDB(): void {
+    try {
+      mongoose.connect(Config.mongo.uri, Config.mongo.options, () => {
+        Logger.info('Conectado a MongoDB');
+      });
+    } catch (error) {
+      Logger.error('No se pudo conectar a MongoDB, revisa .env');
+    }
+  }
+
+  enablePromClient(app: express.Application): void {
+    const originalNormalize = promBundle.normalizePath;
+    const metricsMiddleware = promBundle({
+      includeMethod: true,
+      includePath: true,
+      excludeRoutes: [
+        new RegExp('(?<=[^w/]|^)[w/]uploads'),
+        new RegExp('(?<=[^w/]|^)[w/]admin'),
+        new RegExp('(?<=[^w/]|^)[w/]app'),
+      ],
+      promClient: {
+        collectDefaultMetrics: {},
+      },
+      formatStatusCode: (res: any) => {
+        // combine 200 and 4xx status codes
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          return '2xx';
+        } else if (res.statusCode >= 400 && res.statusCode < 500) {
+          return '4xx';
+        }
+        return '5xx';
+      },
+      normalizePath: (req: any, opts: any) => {
+        const path = originalNormalize(req, opts);
+        return path;
+      },
+    });
+    app.use(metricsMiddleware);
+  }
+
+  initializeControllers(controllers: any[]) {
+    controllers.forEach((controller) => {
+      this.app.use('/', controller.router);
+    });
+  }
+
+  initStaticRoutes(app: express.Application): void {
+    // app.use(express.json());
+    app.use('/uploads', serveIndex(`${this.pathUploads}`));
+    app.use(
+      '/uploads',
+      express.static(`${this.pathUploads}`, { redirect: true })
+    );
+    app.use(
+      '/.well-known',
+      express.static('.well-known'),
+      serveIndex('.well-known')
+    );
+  }
+
+  initializeMiddlewares() {
+    const optionsCors = {
+      origin: '*',
+      exposedHeaders: [
+        'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method',
+      ],
+      credentials: true,
+    };
+    this.app.use(cors(optionsCors));
+    this.app.use(compression());
+    this.app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+    this.app.use(bodyParser.json());
+    this.app.use(methodOverride());
+    this.app.use(morganMiddleware);
+  }
+
+  initializeErrorHandling() {
+    process.on('unhandledRejection', (reason: string, p: Promise<any>) => {
+      Logger.error('Unhandled Rejection at: Promise', p, 'reason:', reason);
+    });
+
+    process.on('uncaughtException', (error: Error) => {
+      Logger.error('Uncaught Exception thrown:', error);
+    });
+  }
+
+  initializeCrontab() {
+    this.crontabService.generateAutomaticsCrons();
+  }
+
+  createCache() {
+    // this.cacheService.create();
+    Logger.info('Cache iniciada');
+  }
+}

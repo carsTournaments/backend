@@ -1,0 +1,151 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "commonjs",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "outDir": "./builds/server",
+        "rootDir": ".",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "pretty": true,
+        "removeComments": true,
+        "strict": false,
+        "noEmitOnError": true,
+        "watch": false,
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "@aggregates": [
+                "src/common/aggregates"
+            ],
+            "@dtos": [
+                "src/common/dtos"
+            ],
+            "@interfaces": [
+                "src/common/interfaces"
+            ],
+            "@middlewares": [
+                "src/common/middlewares"
+            ],
+            "@services": [
+                "src/core/services"
+            ],
+            "@services/*": [
+                "src/core/services/*"
+            ],
+            "@core/*": [
+                "src/core/*"
+            ],
+            "@core": [
+                "src/core"
+            ],
+            "@config": [
+                "src/core/config"
+            ],
+            "@testing/*": [
+                "src/testing/*"
+            ],
+            "@testing": [
+                "src/testing"
+            ],
+            "@test-mocks/*": [
+                "src/testing/mocks/*"
+            ],
+            "@test-mocks": [
+                "src/mocks"
+            ],
+            "@test-helpers/*": [
+                "src/testing/helpers/*"
+            ],
+            "@test-helpers": [
+                "src/helpers"
+            ],
+            "@exceptions": [
+                "src/core/exceptions"
+            ],
+            "@analytics": [
+                "src/modules/analytics"
+            ],
+            "@auth": [
+                "src/modules/auth"
+            ],
+            "@brand": [
+                "src/modules/brand"
+            ],
+            "@car": [
+                "src/modules/car"
+            ],
+            "@cache": [
+                "src/modules/cache"
+            ],
+            "@default": [
+                "src/modules/default"
+            ],
+            "@crontab": [
+                "src/modules/crontab"
+            ],
+            "@image": [
+                "src/modules/image"
+            ],
+            "@inscription": [
+                "src/modules/inscription"
+            ],
+            "@like": [
+                "src/modules/like"
+            ],
+            "@literal": [
+                "src/modules/literal"
+            ],
+            "@logger": [
+                "src/modules/logger"
+            ],
+            "@menu": [
+                "src/modules/menu"
+            ],
+            "@notification": [
+                "src/modules/notification"
+            ],
+            "@ota": [
+                "src/modules/ota"
+            ],
+            "@pairing": [
+                "src/modules/pairing"
+            ],
+            "@report": [
+                "src/modules/report"
+            ],
+            "@round": [
+                "src/modules/round"
+            ],
+            "@search": [
+                "src/modules/search"
+            ],
+            "@settings": [
+                "src/modules/settings"
+            ],
+            "@stats": [
+                "src/modules/stats"
+            ],
+            "@toggle": [
+                "src/modules/toggle"
+            ],
+            "@tournament": [
+                "src/modules/tournament"
+            ],
+            "@user": [
+                "src/modules/user"
+            ],
+            "@vote": [
+                "src/modules/vote"
+            ],
+            "@winner": [
+                "src/modules/winner"
+            ],
+            
+        }
+    },
+    "exclude": ["node_modules", "builds/server/node_modules"],
+    "typeRoots": ["node_modules/@types"],
+    "include": ["src/**/*"]
+}

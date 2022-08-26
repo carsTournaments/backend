@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.josexs.ct",
+            "sha256_cert_fingerprints": [
+                "B2:C0:8A:3A:E4:B9:AB:55:60:81:A4:18:76:AC:B9:71:AA:85:9F:59:2B:A4:FD:85:EE:3F:99:B8:05:AA:98:5C"
+            ]
+        }
+    }
+]

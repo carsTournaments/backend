@@ -1,0 +1,15 @@
+.scannerwork
+.npm
+builds/server
+node_modules/
+logs/
+.git.bfg-report
+scripts/error.log
+.env
+.nyc*
+changelog.md
+coverage
+googleanalytics-credentials.json
+yarn-error.log
+thunder/thunderEnvironment.json
+private.txt

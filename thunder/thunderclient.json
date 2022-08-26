@@ -1,0 +1,2355 @@
+[
+  {
+    "_id": "17f34c0d-9d53-4980-be9e-43cae5e0db4a",
+    "colId": "da204b33-e164-436f-aa44-843aaf7dfa6e",
+    "containerId": "",
+    "name": "Login - User",
+    "url": "{{url}}/auth/login",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-03-16T17:39:57.653Z",
+    "modified": "2022-04-14T07:31:59.942Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"email\": \"manolo@gmail.com\",\n    \"password\": \"975865\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "faf26d5d-e390-47c6-a605-168ff17ae63f",
+    "colId": "da204b33-e164-436f-aa44-843aaf7dfa6e",
+    "containerId": "",
+    "name": "Register",
+    "url": "{{url}}/auth/register",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-03-16T17:46:24.252Z",
+    "modified": "2022-03-16T17:50:07.201Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Jack\",\n    \"email\": \"jack@gmail.com\",\n    \"password\": \"975865\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "2b699bc8-ef01-448c-b347-809ab74df905",
+    "colId": "04a579c4-febf-422b-a097-34095ee703e0",
+    "containerId": "",
+    "name": "Users: GetAll",
+    "url": "{{url}}/users/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-03-16T18:04:03.921Z",
+    "modified": "2022-05-18T10:09:52.601Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e29f3af0-ddf0-41b8-a307-98caf2e47861",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: GetAll",
+    "url": "{{url}}/tournaments/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-03-16T19:52:05.834Z",
+    "modified": "2022-05-14T07:47:30.399Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3cb21e98-e8e2-4d36-947d-d2e7a048ac5f",
+    "colId": "6acf279e-723e-49c6-9eca-854465ea26af",
+    "containerId": "",
+    "name": "Rounds: GetAll",
+    "url": "{{url}}/rounds/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-03-16T19:52:34.589Z",
+    "modified": "2022-06-11T16:07:14.455Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "951bb04d-5298-4d46-8002-96f10d0146e7",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: Create",
+    "url": "{{url}}/tournaments/create",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-03-16T19:59:48.980Z",
+    "modified": "2022-08-11T10:25:43.162Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Prueba23\",\n  \"maxParticipants\": 32,\n  \"requisites\": [],\n  \"status\": \"Completed\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "969fa9a1-1845-4b6f-a3db-124414b6d032",
+    "colId": "6acf279e-723e-49c6-9eca-854465ea26af",
+    "containerId": "",
+    "name": "Rounds: GetOne",
+    "url": "{{url}}/rounds/one/",
+    "method": "POST",
+    "sortNum": 25000,
+    "created": "2022-03-16T20:39:42.525Z",
+    "modified": "2022-03-17T11:58:19.849Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"id\": \"\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "45f62916-15bb-4a98-8e24-432067bb3f60",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: GetOne",
+    "url": "{{url}}/tournaments/getOne/",
+    "method": "POST",
+    "sortNum": 11250,
+    "created": "2022-03-16T20:41:24.262Z",
+    "modified": "2022-08-11T10:25:19.186Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"id\": \"{{tournamentId}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "0267e2a9-2659-46a8-a958-46fd95a14d19",
+    "colId": "3b63637b-c371-44b2-9b1e-dcfad3600d41",
+    "containerId": "",
+    "name": "Brands: GetAll",
+    "url": "{{url}}/brands/getAll",
+    "method": "POST",
+    "sortNum": 2500,
+    "created": "2022-03-17T08:49:11.939Z",
+    "modified": "2022-08-18T09:55:34.884Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "b113f08f-ec5c-44e1-ad23-c6ef42120666",
+    "colId": "3b63637b-c371-44b2-9b1e-dcfad3600d41",
+    "containerId": "",
+    "name": "Brands: Create",
+    "url": "{{url}}/brands/create",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2022-03-17T08:50:29.903Z",
+    "modified": "2022-03-17T10:53:02.235Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Prueba34\",\n    \"country\": \"España\",\n    \"image\": \"\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f13a7dac-d431-429b-ba7e-0432ddf0db6e",
+    "colId": "3b63637b-c371-44b2-9b1e-dcfad3600d41",
+    "containerId": "",
+    "name": "Brands: Update",
+    "url": "{{url}}/brands/update",
+    "method": "PUT",
+    "sortNum": 15000,
+    "created": "2022-03-17T09:01:22.668Z",
+    "modified": "2022-03-17T09:01:55.103Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"_id\": \"6232f8932ce07a4af43fbd9d\",\n    \"name\": \"Prueba3555\",\n    \"country\": \"España\",\n    \"image\": \"3434\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "6a86e494-d305-4cf8-84cb-ac04898e8cc1",
+    "colId": "3b63637b-c371-44b2-9b1e-dcfad3600d41",
+    "containerId": "",
+    "name": "Brands: DeleteOne",
+    "url": "{{url}}/brands/one/6232f8932ce07a4af43fbd9d",
+    "method": "DELETE",
+    "sortNum": 25000,
+    "created": "2022-03-17T09:02:13.667Z",
+    "modified": "2022-03-17T11:28:59.664Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "3bfcf8e3-790c-49db-9cc8-1e227aaf0805",
+    "colId": "04a579c4-febf-422b-a097-34095ee703e0",
+    "containerId": "",
+    "name": "Users: Create",
+    "url": "{{url}}/users/create",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-03-17T09:06:02.001Z",
+    "modified": "2022-03-17T09:07:06.670Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Prueba3\",\n    \"email\": \"prueba@prueba.es\",\n    \"role\": \"USER\",\n    \"password\": \"pepe\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "0935df36-a8c4-44e2-9186-f6eb566788d8",
+    "colId": "04a579c4-febf-422b-a097-34095ee703e0",
+    "containerId": "",
+    "name": "Users: DeleteOne",
+    "url": "{{url}}/users/one/6232fa3a2ce07a4af43fbda6",
+    "method": "DELETE",
+    "sortNum": 30000,
+    "created": "2022-03-17T09:08:33.358Z",
+    "modified": "2022-03-17T09:08:49.434Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Prueba3\",\n    \"email\": \"prueba@prueba.es\",\n    \"role\": \"USER\",\n    \"password\": \"pepe\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7810fe74-9659-4abf-90b9-53ccb7327e98",
+    "colId": "04a579c4-febf-422b-a097-34095ee703e0",
+    "containerId": "",
+    "name": "Users: Update",
+    "url": "{{url}}/users/update",
+    "method": "PUT",
+    "sortNum": 25000,
+    "created": "2022-03-17T09:09:11.746Z",
+    "modified": "2022-03-17T09:09:50.327Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"_id\": \"623222bec3d104f03302d2af\",\n    \"name\": \"JoseXSSX\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3a3f7297-d17c-4d05-85c3-2bc5c5013a2f",
+    "colId": "04a579c4-febf-422b-a097-34095ee703e0",
+    "containerId": "",
+    "name": "Users: GetOne",
+    "url": "{{url}}/users/one",
+    "method": "POST",
+    "sortNum": 19375,
+    "created": "2022-03-17T09:10:14.857Z",
+    "modified": "2022-08-19T18:16:54.129Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"{{userId}}\" }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5dd019c8-d78d-4470-ab6b-504734033e3f",
+    "colId": "3b63637b-c371-44b2-9b1e-dcfad3600d41",
+    "containerId": "",
+    "name": "Brands: GetOne",
+    "url": "{{url}}/brands/one",
+    "method": "POST",
+    "sortNum": 3750,
+    "created": "2022-03-17T09:11:01.675Z",
+    "modified": "2022-03-17T09:11:24.959Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"id\": \"6232f8932ce07a4af43fbd9d\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "a051c075-2a91-4b20-9f4a-82bc0b0cd63c",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: GetAll",
+    "url": "{{url}}/cars/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-03-17T10:41:04.640Z",
+    "modified": "2022-05-13T11:20:35.813Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "90a87aff-0aa0-4123-acca-3573cc6411d7",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: Create",
+    "url": "{{url}}/cars/create",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-03-17T10:42:37.958Z",
+    "modified": "2022-03-17T17:55:26.823Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Prueba7\",\n    \"driver\": \"623222bec3d104f03302d2af\",\n    \"brand\": \"623310df87694ee07d4ace41\",\n    \"traction\": \"Delantera\",\n    \"cv\": 100,\n    \"cc\": 1400,\n    \"image\": \"\",\n    \"stock\": true,\n    \"info\": \"Mi coche\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "dddffb49-9263-4e72-80d5-fa3cf514d036",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: getAllDriverCars",
+    "url": "{{url}}/cars/getAllDriverCars",
+    "method": "POST",
+    "sortNum": 11250,
+    "created": "2022-03-17T11:25:33.285Z",
+    "modified": "2022-08-18T09:56:27.067Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"{{userId}}\"}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "91e66445-92f4-4f3f-80db-5e84626b6bcc",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: getAllBrandCars",
+    "url": "{{url}}/cars/getAllBrandCars",
+    "method": "POST",
+    "sortNum": 11875,
+    "created": "2022-03-17T11:26:35.916Z",
+    "modified": "2022-08-18T09:55:15.666Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"{{brandId}}\"}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "istype",
+        "value": "array"
+      }
+    ]
+  },
+  {
+    "_id": "4f3fe15e-1386-47cb-ad0d-201435d1dce3",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: DeleteOne",
+    "url": "{{url}}/cars/one/6233117587694ee07d4ace46",
+    "method": "DELETE",
+    "sortNum": 30000,
+    "created": "2022-03-17T11:42:29.163Z",
+    "modified": "2022-03-17T11:42:52.981Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b4bed0d7-9321-416a-8104-db5fea8c3794",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: Update",
+    "url": "{{url}}/cars/update",
+    "method": "PUT",
+    "sortNum": 25000,
+    "created": "2022-03-17T11:43:32.601Z",
+    "modified": "2022-03-17T17:56:10.722Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"_id\": \"6233117e87694ee07d4ace48\",\n    \"brand\": \"623310df87694ee07d4ace41\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3a50d5a4-f0b1-4255-97f3-b543003b91b6",
+    "colId": "98eb6894-6ebe-46b6-9555-865f43e19606",
+    "containerId": "",
+    "name": "Pairings: GetAll",
+    "url": "{{url}}/pairings/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-03-17T11:57:22.000Z",
+    "modified": "2022-05-13T11:20:42.021Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "94f8aa52-cb33-483e-8d1b-5f24e2b5e1db",
+    "colId": "6acf279e-723e-49c6-9eca-854465ea26af",
+    "containerId": "",
+    "name": "Rounds: DeleteOne",
+    "url": "{{url}}/rounds/one/6233117587694ee07d4ace46",
+    "method": "DELETE",
+    "sortNum": 30000,
+    "created": "2022-03-17T11:57:53.437Z",
+    "modified": "2022-03-17T11:58:07.232Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c11d2595-c4dd-4383-ad7d-c0ad837a20dc",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: DeleteOne",
+    "url": "{{url}}/tournaments/one/623242a25ebbcc5434781012",
+    "method": "DELETE",
+    "sortNum": 60000,
+    "created": "2022-03-17T11:58:40.615Z",
+    "modified": "2022-03-17T15:42:25.898Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e6985240-1d7e-48b3-8fc0-bdc560577a44",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: StartTournament",
+    "url": "{{url}}/tournaments/startTournament",
+    "method": "POST",
+    "sortNum": 12500,
+    "created": "2022-03-17T12:11:15.623Z",
+    "modified": "2022-08-11T10:25:38.907Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"{{tournamentId}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "690f84ed-66d3-462a-bad0-7ea744a69b45",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: DeleteAllParticipantsOfTournament",
+    "url": "{{url}}/tournaments/allParticipantsOfTournament/623242bb5ebbcc5434781017",
+    "method": "DELETE",
+    "sortNum": 40000,
+    "created": "2022-03-17T15:25:24.108Z",
+    "modified": "2022-03-17T15:28:14.143Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "4ffeb211-18c3-4855-92f6-77bdc007bbbd",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: DeleteAllRequisitesOfTournament",
+    "url": "{{url}}/tournaments/allRequisitesOfTournament/623242bb5ebbcc5434781017",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-03-17T15:40:56.526Z",
+    "modified": "2022-03-17T15:42:04.506Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "07352633-3574-4ac1-9557-b3591cfbd754",
+    "colId": "f0687248-d792-4542-b41e-f488caca5247",
+    "containerId": "",
+    "name": "Inscriptions: DeleteOne",
+    "url": "{{url}}/inscriptions/one/62335d70319ffbaafa08079f",
+    "method": "DELETE",
+    "sortNum": 25000,
+    "created": "2022-03-17T16:07:32.068Z",
+    "modified": "2022-03-17T16:11:56.432Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "923ae3b4-6757-402a-9ddc-f7e5fc2ca70c",
+    "colId": "f0687248-d792-4542-b41e-f488caca5247",
+    "containerId": "",
+    "name": "Inscriptions: GetOne",
+    "url": "{{url}}/inscriptions/getOne",
+    "method": "POST",
+    "sortNum": 3750,
+    "created": "2022-03-17T16:07:32.068Z",
+    "modified": "2022-05-12T13:24:49.175Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"id\": \"6277b39fac695a47ac76f7d4\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c94c3d4f-c560-47c5-99a8-f6408cabe299",
+    "colId": "f0687248-d792-4542-b41e-f488caca5247",
+    "containerId": "",
+    "name": "Inscriptions: getAll",
+    "url": "{{url}}/inscriptions/getAll",
+    "method": "POST",
+    "sortNum": 2500,
+    "created": "2022-03-17T16:07:32.068Z",
+    "modified": "2022-05-12T13:19:39.245Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "da4a76c4-8d30-430f-9765-a54de0032fc5",
+    "colId": "f0687248-d792-4542-b41e-f488caca5247",
+    "containerId": "",
+    "name": "Inscriptions: Create",
+    "url": "{{url}}/inscriptions/create",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2022-03-17T16:07:32.068Z",
+    "modified": "2022-08-11T10:28:36.601Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"car\": \"{{carId}}\",\n  \"tournament\": \"{{tournamentId}}\",\n  \"driver\": \"{{userId}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "756dae5c-259d-482f-80ed-744ff3178077",
+    "colId": "f0687248-d792-4542-b41e-f488caca5247",
+    "containerId": "",
+    "name": "Inscriptions: CreateItemsUntilCompleteTournament",
+    "url": "{{url}}/inscriptions/forceInscriptions",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2022-03-18T21:06:23.231Z",
+    "modified": "2022-08-11T10:28:34.217Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"{{tournamentId}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7a721537-45b1-4e52-adb8-dac67c3ee402",
+    "colId": "04a579c4-febf-422b-a097-34095ee703e0",
+    "containerId": "",
+    "name": "Users: Create Fake",
+    "url": "{{url}}/users/createFake",
+    "method": "POST",
+    "sortNum": 22500,
+    "created": "2022-03-19T00:15:06.828Z",
+    "modified": "2022-03-19T00:15:24.544Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"total\": 5\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7adfd582-96a8-4f87-8263-0b613431bb36",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Users: Create Fake",
+    "url": "{{url}}/cars/createFake",
+    "method": "POST",
+    "sortNum": 22500,
+    "created": "2022-03-19T00:47:01.941Z",
+    "modified": "2022-03-19T00:50:03.432Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"total\": 5\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "2fe1ea09-640c-46ad-ac28-60c6cf14453a",
+    "colId": "04a579c4-febf-422b-a097-34095ee703e0",
+    "containerId": "",
+    "name": "Users: DeleteAllFake",
+    "url": "{{url}}/users/allFake",
+    "method": "DELETE",
+    "sortNum": 40000,
+    "created": "2022-03-19T00:47:16.159Z",
+    "modified": "2022-03-19T00:47:39.334Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Prueba3\",\n    \"email\": \"prueba@prueba.es\",\n    \"role\": \"USER\",\n    \"password\": \"pepe\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "01fc525a-e32d-4378-b906-1e8305647755",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Users: DeleteAllFake",
+    "url": "{{url}}/cars/allFake",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-03-19T00:48:31.023Z",
+    "modified": "2022-03-19T00:49:14.441Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Prueba3\",\n    \"email\": \"prueba@prueba.es\",\n    \"role\": \"USER\",\n    \"password\": \"pepe\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5882d3e6-9241-412d-8b6e-5d35677806ed",
+    "colId": "57e75e05-c336-4b4b-af77-31bc75ac7fbd",
+    "containerId": "",
+    "name": "Images: Upload",
+    "url": "{{url}}/images/upload/tournament/5",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-03-25T17:15:26.948Z",
+    "modified": "2022-03-25T17:47:05.522Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "binary",
+      "raw": "",
+      "form": [],
+      "binary": "../../../Downloads/Captura de pantalla 2022-03-05 a las 1.20.50.png"
+    },
+    "tests": []
+  },
+  {
+    "_id": "95eea0dd-4b79-44b9-b64a-67b90f293899",
+    "colId": "57e75e05-c336-4b4b-af77-31bc75ac7fbd",
+    "containerId": "",
+    "name": "Images: UpdateBrandImagesWithJsonFile",
+    "url": "{{url}}/images/updateBrandImagesWithJsonFile",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-03-26T00:57:59.299Z",
+    "modified": "2022-03-26T00:58:15.339Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "binary",
+      "raw": "",
+      "form": [],
+      "binary": "../../../Downloads/Captura de pantalla 2022-03-05 a las 1.20.50.png"
+    },
+    "tests": []
+  },
+  {
+    "_id": "8bbfa2a8-c006-46e7-ad2f-e6aac713e1e1",
+    "colId": "da204b33-e164-436f-aa44-843aaf7dfa6e",
+    "containerId": "",
+    "name": "Login - Admin",
+    "url": "{{url}}/auth/login",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2022-04-14T07:31:39.356Z",
+    "modified": "2022-04-29T16:10:42.543Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"email\": \"xskunk@gmail.com\",\n    \"password\": \"975865\",\n    \"site\": \"admin\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1ef40a77-90b4-4501-a654-30b7ec9bd7b9",
+    "colId": "327ef9db-087e-4772-afd5-9c764a204075",
+    "containerId": "",
+    "name": "Likes: getAll",
+    "url": "{{url}}/likes/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-04-25T10:50:15.779Z",
+    "modified": "2022-06-11T16:50:42.407Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "a374f995-2288-47ee-a645-60ea6c53269b",
+    "colId": "327ef9db-087e-4772-afd5-9c764a204075",
+    "containerId": "",
+    "name": "Likes: getAllReceivedForUser",
+    "url": "{{url}}/likes/getAllReceivedForUser",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2022-04-28T17:54:00.010Z",
+    "modified": "2022-08-11T10:28:28.535Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"{{userId}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "00464519-f76d-42f6-a11e-b25611bc9bcc",
+    "colId": "d8cf1a30-ebae-424f-b273-f42811ffe807",
+    "containerId": "",
+    "name": "Settings: getAll",
+    "url": "{{url}}/settings/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-04-29T16:05:42.020Z",
+    "modified": "2022-04-29T16:08:15.642Z",
+    "headers": [
+      {
+        "name": "token",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "9262ed04-3d9c-4dee-a5df-bd63271b2e76",
+    "colId": "d8cf1a30-ebae-424f-b273-f42811ffe807",
+    "containerId": "",
+    "name": "Settings: checkUpdate",
+    "url": "{{url}}/settings/checkUpdate",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-04-29T18:10:31.956Z",
+    "modified": "2022-04-29T19:51:40.741Z",
+    "headers": [
+      {
+        "name": "token",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"platform\": \"android\",\n    \"version\": \"0.0.3\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "4018c9fa-7c7c-4a8a-b3cf-d4965b9d3b49",
+    "colId": "d8cf1a30-ebae-424f-b273-f42811ffe807",
+    "containerId": "",
+    "name": "Settings: getSettingsApp - Capacitor",
+    "url": "{{url}}/settings/getSettingsForApp",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2022-05-05T13:04:07.904Z",
+    "modified": "2022-07-31T08:56:26.856Z",
+    "headers": [
+      {
+        "name": "token",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"platform\": \"android\",\n    \"version\": \"0.4.0\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "77cf02a9-7bdf-4fb6-907b-dfe9ebf56714",
+    "colId": "d8cf1a30-ebae-424f-b273-f42811ffe807",
+    "containerId": "",
+    "name": "Settings: getSettingsApp - Pwa",
+    "url": "{{url}}/settings/getSettingsForApp",
+    "method": "POST",
+    "sortNum": 17500,
+    "created": "2022-05-06T06:48:00.481Z",
+    "modified": "2022-05-06T06:48:18.082Z",
+    "headers": [
+      {
+        "name": "token",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "8e5caf5c-0a5f-449a-b8a3-e8a6961a7185",
+    "colId": "a1b85b23-24d9-4163-bbbb-948be52ad044",
+    "containerId": "",
+    "name": "Winners: forTournamentComplete",
+    "url": "{{url}}/winners/forTournamentComplete",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-05-10T09:29:25.182Z",
+    "modified": "2022-08-17T08:28:55.105Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"id\": \"{{tournamentId}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "dcdb7354-b582-41da-a5ee-daea2a46b5b9",
+    "colId": "f0687248-d792-4542-b41e-f488caca5247",
+    "containerId": "",
+    "name": "Inscriptions: getAllDriverInscriptions",
+    "url": "{{url}}/inscriptions/getAllDriverInscriptions",
+    "method": "POST",
+    "sortNum": 3125,
+    "created": "2022-05-12T13:15:31.749Z",
+    "modified": "2022-08-11T10:28:38.861Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"{{userId}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "a241d07c-9058-4d79-ac45-fe1452dff313",
+    "colId": "57e75e05-c336-4b4b-af77-31bc75ac7fbd",
+    "containerId": "",
+    "name": "Images: getAll",
+    "url": "{{url}}/images/getAll",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2022-05-12T13:19:58.386Z",
+    "modified": "2022-05-12T13:20:06.818Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "67ebf773-0ffe-4a2e-80b2-cb38161f59a2",
+    "colId": "a1b85b23-24d9-4163-bbbb-948be52ad044",
+    "containerId": "",
+    "name": "Winners: getAll",
+    "url": "{{url}}/winners/getAll",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2022-05-12T13:25:27.290Z",
+    "modified": "2022-08-11T10:16:04.823Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1da890a7-e18e-41da-a35a-170f9e13bb86",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: getOne",
+    "url": "{{url}}/cars/one",
+    "method": "POST",
+    "sortNum": 12500,
+    "created": "2022-05-12T21:14:43.698Z",
+    "modified": "2022-08-18T09:57:22.312Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"{{carId}}\", \"site\": \"app\"}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "72d8796d-0dd0-4f4c-86a6-9121b76a531c",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: getAllOfAllStates",
+    "url": "{{url}}/tournaments/getAllOfAllStates",
+    "method": "POST",
+    "sortNum": 10625,
+    "created": "2022-05-14T07:48:01.906Z",
+    "modified": "2022-05-14T07:48:26.138Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "817da85b-6d2f-4ca7-ba8e-5939f6eea392",
+    "colId": "3b63637b-c371-44b2-9b1e-dcfad3600d41",
+    "containerId": "",
+    "name": "Brands: allOfAllBrandsAndCarsBrand",
+    "url": "{{url}}/brands/allOfAllBrandsAndCarsBrand",
+    "method": "POST",
+    "sortNum": 3125,
+    "created": "2022-05-17T11:20:50.662Z",
+    "modified": "2022-05-17T12:10:51.940Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{    \n    \"page\": 1,     \n    \"pageSize\": 20,     \n    \"order\": [\"name\", \"asc\"],\n    \"onlyWithImages\": true\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "73bf9117-9174-4ccd-bf08-e954dfba2cca",
+    "colId": "327ef9db-087e-4772-afd5-9c764a204075",
+    "containerId": "",
+    "name": "Likes: getAllCarLikes",
+    "url": "{{url}}/likes/getAllCarLikes",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-05-17T20:46:26.055Z",
+    "modified": "2022-08-11T10:28:24.923Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"{{carId}}\",\n  \"limit\": \"{{limit}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "b2eb887e-29b9-4817-bbb2-6f24aa66ebf7",
+    "colId": "f0687248-d792-4542-b41e-f488caca5247",
+    "containerId": "",
+    "name": "Inscriptions: getAllCarInscriptions",
+    "url": "{{url}}/inscriptions/getAllCarInscriptions",
+    "method": "POST",
+    "sortNum": 3437.5,
+    "created": "2022-05-18T08:26:13.593Z",
+    "modified": "2022-08-11T10:28:43.677Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"{{carId}}\",\n  \"limit\": \"{{limit}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "54433671-292c-46e4-bc89-7c363a028539",
+    "colId": "58bd6682-ed79-426f-9338-029d7c2176ab",
+    "containerId": "",
+    "name": "Votes: getAllCarVotes",
+    "url": "{{url}}/votes/getAllCarVotes",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-05-18T08:49:02.759Z",
+    "modified": "2022-07-27T11:41:14.375Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"626a5e223a99751e862f8ef4\", \"limit\": \"10\" }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c592ad39-c4bc-415b-b54e-f386a2ebe319",
+    "colId": "57d7b80f-7ea1-4134-ab39-a157518c64c7",
+    "containerId": "",
+    "name": "Notifications: create",
+    "url": "{{url}}/notifications/create",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-05-18T15:35:28.629Z",
+    "modified": "2022-05-20T07:12:14.665Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"users\": [],\n    \"fcms\": [\"cxjTO-AfS8CZgNkauFei9v:APA91bFTLxjcJ3wInaKuLPiyU1plqkJsy_uEsQd2y1_qNsmei0pp9lCl-MbdSz_Q3jeB2gx5hZKo-vFXxHMFlpx0kKL_6OuCkMueHqDtRvggg5IaZL-O0XounJvDmrOUNmiYlgvDH-KX\"],\n    \"title\": \"ola k ase\",\n    \"message\": \"poca cosa\",\n    \"link\": \"https://www.google.es\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "d63676a7-ffe2-4192-b104-f80d7e4f529c",
+    "colId": "57d7b80f-7ea1-4134-ab39-a157518c64c7",
+    "containerId": "",
+    "name": "Notifications: updateFCMForUser",
+    "url": "{{url}}/notifications/updateFCMForUser",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-05-18T17:51:16.635Z",
+    "modified": "2022-05-18T17:54:00.210Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n   \"id\": \"623222bec3d104f03302d2af\",\n   \"token\": \"\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "81060d30-f9c4-4d89-8e27-45c6ed07575c",
+    "colId": "831a0905-f354-4645-9025-c4a3711d2275",
+    "containerId": "",
+    "name": "Analytics: getVisits",
+    "url": "{{url}}/analytics/getVisits",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-05-19T14:55:31.856Z",
+    "modified": "2022-05-20T10:17:47.922Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"startDate\": \"3daysAgo\",\n    \"endDate\": \"today\",\n    \"order\": \"date\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "4f492ef5-ca74-4001-a5d5-45c0c5ccbed5",
+    "colId": "831a0905-f354-4645-9025-c4a3711d2275",
+    "containerId": "",
+    "name": "Analytics: getVisitsRealTime",
+    "url": "{{url}}/analytics/getVisitsRealTime",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-05-19T16:30:37.185Z",
+    "modified": "2022-05-19T16:30:45.384Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f701f691-d079-4cba-bf8d-aa2962700c37",
+    "colId": "57d7b80f-7ea1-4134-ab39-a157518c64c7",
+    "containerId": "",
+    "name": "Notifications: getAll",
+    "url": "{{url}}/notifications/getAll",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2022-05-20T07:11:52.357Z",
+    "modified": "2022-06-11T16:50:49.000Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8c03fc4f-bffb-4150-9097-5203adfa8395",
+    "colId": "831a0905-f354-4645-9025-c4a3711d2275",
+    "containerId": "",
+    "name": "Analytics: getVisits Copy",
+    "url": "{{url}}/analytics/getEventsWithCategories",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2022-05-25T07:57:20.807Z",
+    "modified": "2022-05-25T08:10:28.911Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"startDate\": \"7daysAgo\",\n    \"endDate\": \"today\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "08d839c6-97c4-4bb6-b7d8-812f2affe3d8",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: getDaysForCalendar",
+    "url": "{{url}}/tournaments/getDaysForCalendar",
+    "method": "POST",
+    "sortNum": 10312.5,
+    "created": "2022-05-27T20:55:21.282Z",
+    "modified": "2022-05-27T21:04:50.850Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "48804a75-6974-45c7-8c2f-3d116909899a",
+    "colId": "0e3ba756-fa94-4818-a70b-318503397b88",
+    "containerId": "",
+    "name": "Tournaments: getCalendarItems",
+    "url": "{{url}}/tournaments/getCalendarItems",
+    "method": "POST",
+    "sortNum": 10468.8,
+    "created": "2022-05-27T21:10:04.236Z",
+    "modified": "2022-07-14T21:37:03.974Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"date\": \"2022-07-16\"}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "a32b83ca-3e3b-46bc-9617-81c3c4af1fa3",
+    "colId": "89ca23ea-34e4-41f2-a69e-c365b2fba67d",
+    "containerId": "",
+    "name": "Ota: gerOtaAvailable",
+    "url": "{{url}}/ota/getOtaAvailable",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-05-31T14:22:28.267Z",
+    "modified": "2022-06-01T15:41:39.246Z",
+    "headers": [
+      {
+        "name": "cap_platform",
+        "value": "android"
+      },
+      {
+        "name": "cap_device_id",
+        "value": "yeah"
+      },
+      {
+        "name": "cap_app_id",
+        "value": "APPID_FROM_CAPACITOR_CONFIG"
+      },
+      {
+        "name": "cap_version_build",
+        "value": "VERSION_NUMBER_FROM_STORE"
+      },
+      {
+        "name": "cap_plugin_version",
+        "value": "PLUGIN_VERSION"
+      },
+      {
+        "name": "cap_version_name",
+        "value": "LAST_DOWNLOADER_VERSION"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c9c81e4e-36b0-4575-addf-7004bdbebe77",
+    "colId": "302dc7a9-0d46-49d7-a735-67d81518614f",
+    "containerId": "",
+    "name": "Toggles: getAll",
+    "url": "{{url}}/toggles/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-06-01T19:58:18.026Z",
+    "modified": "2022-06-11T16:51:07.404Z",
+    "headers": [
+      {
+        "name": "cap_platform",
+        "value": "android"
+      },
+      {
+        "name": "cap_device_id",
+        "value": "yeah"
+      },
+      {
+        "name": "cap_app_id",
+        "value": "APPID_FROM_CAPACITOR_CONFIG"
+      },
+      {
+        "name": "cap_version_build",
+        "value": "VERSION_NUMBER_FROM_STORE"
+      },
+      {
+        "name": "cap_plugin_version",
+        "value": "PLUGIN_VERSION"
+      },
+      {
+        "name": "cap_version_name",
+        "value": "LAST_DOWNLOADER_VERSION"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "5c722484-2f72-4143-97e9-e0d60f50ec0e",
+    "colId": "58bd6682-ed79-426f-9338-029d7c2176ab",
+    "containerId": "",
+    "name": "Votes: getAll",
+    "url": "{{url}}/votes/getAll",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2022-06-11T16:51:39.161Z",
+    "modified": "2022-06-11T16:51:55.695Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7eba4c97-c478-4494-9efa-c68badd3ce0a",
+    "colId": "64e3784a-193c-4ea2-a716-f65726ee28ab",
+    "containerId": "",
+    "name": "Menu: getAll",
+    "url": "{{url}}/menu/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-06-11T16:52:31.800Z",
+    "modified": "2022-06-11T17:04:59.866Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "60605ad8-f826-4394-a7b9-e58af4e98e72",
+    "colId": "64e3784a-193c-4ea2-a716-f65726ee28ab",
+    "containerId": "",
+    "name": "Menu: getMenu",
+    "url": "{{url}}/menu",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-06-11T16:53:41.674Z",
+    "modified": "2022-06-11T16:53:54.273Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ede86324-6426-4886-9246-be011d421491",
+    "colId": "64e3784a-193c-4ea2-a716-f65726ee28ab",
+    "containerId": "",
+    "name": "Menu: Create",
+    "url": "{{url}}/menu/create",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-06-11T17:05:25.884Z",
+    "modified": "2022-06-11T17:31:20.269Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n        \"route\": \"enlaces\",\n        \"name\": \"Enlaces\",\n        \"type\": \"sub\",\n        \"icon\": \"link\",\n        \"position\": 7,\n        \"children\": [\n            {\n                \"route\": \"Google\",\n                \"name\": \"Google\",\n                \"type\": \"sub\",\n                \"position\": 0,\n                \"children\": [\n                    {\n                        \"route\": \"https://play.google.com/console/u/0/developers/4857692934101353500/app/4972030920851259451/app-dashboard?timespan=thirtyDays\",\n                        \"name\": \"Analytics\",\n                        \"type\": \"extTabLink\",\n                        \"position\":0\n                    },\n                    {\n                        \"route\": \"https://console.firebase.google.com/project/carstournaments-ec272/overview\",\n                        \"name\": \"Firebase\",\n                        \"type\": \"extTabLink\",\n                        \"position\":1\n                    },\n                    {\n                        \"route\": \"https://play.google.com/console/u/0/developers/4857692934101353500/app/4972030920851259451/app-dashboard?timespan=thirtyDays\",\n                        \"name\": \"Play Console\",\n                        \"type\": \"extTabLink\",\n                        \"position\":2\n                    }\n                ]\n            },\n            {\n                \"route\": \"https://josexs.grafana.net/d/WsrVVC9nk/node-js-overview?orgId=1&refresh=30s&from=now-5m&to=now\",\n                \"name\": \"Grafana\",\n                \"type\": \"extTabLink\",\n                \"position\": 1\n            }\n        ]\n    }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "53ff3005-f853-4efe-90b0-f7e8d9f273f7",
+    "colId": "64e3784a-193c-4ea2-a716-f65726ee28ab",
+    "containerId": "",
+    "name": "Menu: Update",
+    "url": "{{url}}/menu/update",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2022-06-11T17:14:33.910Z",
+    "modified": "2022-06-11T17:33:02.276Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"_id\": \"62a4d136ac8ee46c59c2ab84\",\n    \"route\": \"system\",\n    \"name\": \"Sistema\",\n    \"type\": \"sub\",\n    \"icon\": \"settings\",\n    \"children\": [\n      {\n        \"route\": \"settings\",\n        \"name\": \"Configuracion\",\n        \"type\": \"link\",\n        \"position\": 0\n      },\n      {\n        \"route\": \"toggles\",\n        \"name\": \"Toggles\",\n        \"type\": \"link\",\n        \"position\": 1\n      },\n      {\n        \"route\": \"ota\",\n        \"name\": \"Otas\",\n        \"type\": \"link\",\n        \"position\": 2\n      },\n      {\n        \"route\": \"stats\",\n        \"name\": \"Estadisticas\",\n        \"type\": \"link\",\n        \"position\": 3\n      },\n      {\n        \"route\": \"logs\",\n        \"name\": \"Logs\",\n        \"type\": \"link\",\n        \"position\": 4\n      },\n      {\n        \"route\": \"notifications\",\n        \"name\": \"Notificationes Push\",\n        \"type\": \"link\",\n        \"position\": 6\n      },\n      {\n        \"route\": \"menu\",\n        \"name\": \"Menu\",\n        \"type\": \"link\",\n        \"position\": 5\n      }\n    ],\n    \"position\": 6,\n    \"created\": \"2022-06-11T17:30:30.658Z\",\n    \"updated\": \"2022-06-11T17:30:30.658Z\"\n  }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8db7b423-a09a-4018-9f27-ab4a2c317680",
+    "colId": "1e47e6ae-fced-4ed2-b385-5778a959ae64",
+    "containerId": "",
+    "name": "Literals: GetAll",
+    "url": "{{url}}/literals/getAll",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-06-19T12:24:39.883Z",
+    "modified": "2022-06-19T16:51:05.778Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{{getAllBody}}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "d457117a-1fa9-437a-a036-dc77a5a5c945",
+    "colId": "1e47e6ae-fced-4ed2-b385-5778a959ae64",
+    "containerId": "",
+    "name": "Literals: Create",
+    "url": "{{url}}/literals/create",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-06-19T12:25:43.848Z",
+    "modified": "2022-06-19T17:32:37.690Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"title\",\n    \"category\": \"calendar\",\n    \"es\": \"Calendario\",\n    \"en\": \"Calendar\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "588dc68e-31c1-4439-af50-6b2390155d6b",
+    "colId": "1e47e6ae-fced-4ed2-b385-5778a959ae64",
+    "containerId": "",
+    "name": "Literals: Update",
+    "url": "{{url}}/literals/update",
+    "method": "PUT",
+    "sortNum": 30000,
+    "created": "2022-06-19T12:27:02.215Z",
+    "modified": "2022-06-19T16:56:33.948Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"hello\",\n    \"category\": \"home\",\n    \"es\": \"Hola\",\n    \"en\": \"Helloss\",\n    \"_id\": \"62af17a00dc74d6ed9c66a83\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "832bfa00-06d3-4beb-895f-164e1f61bdc8",
+    "colId": "1e47e6ae-fced-4ed2-b385-5778a959ae64",
+    "containerId": "",
+    "name": "Literals: Delete One",
+    "url": "{{url}}/literals/one/62af15ff8d6f9e244055cf42",
+    "method": "DELETE",
+    "sortNum": 40000,
+    "created": "2022-06-19T12:27:40.249Z",
+    "modified": "2022-06-19T16:51:16.019Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "4d3522e8-3d25-4757-bd93-7e8d60276564",
+    "colId": "1e47e6ae-fced-4ed2-b385-5778a959ae64",
+    "containerId": "",
+    "name": "Literals: GetOne",
+    "url": "{{url}}/literals/getOne",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2022-06-19T12:32:54.418Z",
+    "modified": "2022-06-19T16:51:02.070Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"62af17a00dc74d6ed9c66a83\" }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "4c5e8c59-a3e8-471f-a7ab-3d4d25c35a90",
+    "colId": "1e47e6ae-fced-4ed2-b385-5778a959ae64",
+    "containerId": "",
+    "name": "Literals: getAllForLanguage: ES",
+    "url": "{{url}}/literals/es",
+    "method": "GET",
+    "sortNum": 17500,
+    "created": "2022-06-19T12:39:04.548Z",
+    "modified": "2022-06-19T17:04:53.823Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"language\": \"es\" }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "76f24b46-e583-4788-9008-5783883ebc8b",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: getGlobalRanking",
+    "url": "{{url}}/cars/getGlobalRanking",
+    "method": "POST",
+    "sortNum": 12187.5,
+    "created": "2022-07-06T11:22:48.614Z",
+    "modified": "2022-08-18T09:57:06.521Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"limit\": 10,\n    \"order\": \"votes\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "36c69d35-4ff6-456f-8329-78137e7e6ca0",
+    "colId": "04a579c4-febf-422b-a097-34095ee703e0",
+    "containerId": "",
+    "name": "Users: getResume",
+    "url": "{{url}}/users/getResume",
+    "method": "POST",
+    "sortNum": 17500,
+    "created": "2022-07-13T09:06:22.204Z",
+    "modified": "2022-07-13T09:06:30.152Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "7d552dd6-24ae-4d2f-98ee-b857056887a1",
+    "colId": "1e47e6ae-fced-4ed2-b385-5778a959ae64",
+    "containerId": "",
+    "name": "Literals: getAllForLanguage: EN",
+    "url": "{{url}}/literals/en",
+    "method": "GET",
+    "sortNum": 18750,
+    "created": "2022-07-14T07:51:22.737Z",
+    "modified": "2022-07-14T08:24:51.925Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "db4c62a6-b204-48fe-a4db-70508ae0923d",
+    "colId": "5e8583c3-209c-497d-96fe-389ad69c0ae6",
+    "containerId": "",
+    "name": "Cache: deleteAll",
+    "url": "{{url}}/cache/all",
+    "method": "DELETE",
+    "sortNum": 10000,
+    "created": "2022-07-15T10:28:47.717Z",
+    "modified": "2022-07-15T10:30:37.384Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e008039c-6a33-4f80-9d92-e6109babdc00",
+    "colId": "5e8583c3-209c-497d-96fe-389ad69c0ae6",
+    "containerId": "",
+    "name": "Cache: deleteOne",
+    "url": "{{url}}/cache/one/user_getResume_623222bec3d104f03302d2af",
+    "method": "DELETE",
+    "sortNum": 5000,
+    "created": "2022-07-15T10:34:24.708Z",
+    "modified": "2022-07-15T11:46:28.590Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "1e186f31-d60a-4fcd-8b74-bf1ff699b9a2",
+    "colId": "5e8583c3-209c-497d-96fe-389ad69c0ae6",
+    "containerId": "",
+    "name": "Cache: getAll",
+    "url": "{{url}}/cache/getAll",
+    "method": "POST",
+    "sortNum": 2500,
+    "created": "2022-07-15T11:38:24.057Z",
+    "modified": "2022-07-15T11:56:19.965Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "1f7f2ec1-f22c-4e77-93e1-1bceaf949a47",
+    "colId": "6acf279e-723e-49c6-9eca-854465ea26af",
+    "containerId": "",
+    "name": "Rounds: getAllTournamentRounds",
+    "url": "{{url}}/rounds/getAllTournamentRounds",
+    "method": "POST",
+    "sortNum": 17500,
+    "created": "2022-07-20T19:02:51.535Z",
+    "modified": "2022-07-26T13:39:22.338Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"62adcfdc88dd6d8e7e7e3a28\" }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "15906950-6dda-4d33-ab6e-97dec56c30cd",
+    "colId": "98eb6894-6ebe-46b6-9555-865f43e19606",
+    "containerId": "",
+    "name": "Pairings: getAllTournamentPairings",
+    "url": "{{url}}/pairings/getAllTournamentPairings",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-07-26T13:34:17.918Z",
+    "modified": "2022-08-11T10:24:56.509Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"{{tournamentId}}\" }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "2fa44321-eb59-4bd5-8c82-e0a4aa8803c6",
+    "colId": "39855a60-24f5-4019-ab22-3c8c1bf690fd",
+    "containerId": "",
+    "name": "Stats: getResume -> info",
+    "url": "{{url}}/stats/getResume",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-07-26T16:03:10.760Z",
+    "modified": "2022-07-26T16:05:28.454Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"type\": \"info\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5a10e16b-b6fe-4f15-93ac-da8b5e33629e",
+    "colId": "39855a60-24f5-4019-ab22-3c8c1bf690fd",
+    "containerId": "",
+    "name": "Stats: getResume -> event",
+    "url": "{{url}}/stats/getResume",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-07-26T16:07:21.227Z",
+    "modified": "2022-07-26T16:08:22.735Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"type\": \"event\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "15e8a25e-bd0a-4531-ba47-7d642b40e757",
+    "colId": "39855a60-24f5-4019-ab22-3c8c1bf690fd",
+    "containerId": "",
+    "name": "Stats: getResume -> site",
+    "url": "{{url}}/stats/getResume",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-07-26T16:08:52.726Z",
+    "modified": "2022-07-26T16:09:01.565Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"type\": \"site\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "81e26883-3cb2-49e3-a36b-00f7e4a11b0e",
+    "colId": "39855a60-24f5-4019-ab22-3c8c1bf690fd",
+    "containerId": "",
+    "name": "Stats: getResume -> server",
+    "url": "{{url}}/stats/getResume",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2022-07-26T16:09:17.777Z",
+    "modified": "2022-07-26T16:09:30.144Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"type\": \"server\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "a4300412-5136-4ca0-b6f0-6a3fd53a5349",
+    "colId": "39855a60-24f5-4019-ab22-3c8c1bf690fd",
+    "containerId": "",
+    "name": "Stats: getNewResume -> info",
+    "url": "{{url}}/stats/getNewResume",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2022-07-26T16:17:24.068Z",
+    "modified": "2022-07-26T16:17:42.132Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"type\": \"info\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "4561ca17-ec9a-4f11-89bb-a230ddc4c335",
+    "colId": "58bd6682-ed79-426f-9338-029d7c2176ab",
+    "containerId": "",
+    "name": "Votes: getAllTournamentVotes",
+    "url": "{{url}}/votes/getAllTournamentVotes",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-07-27T11:41:18.831Z",
+    "modified": "2022-07-27T11:41:57.795Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"62335db0319ffbaafa0807a5\", \"limit\": \"10\" }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "857ff569-76bf-4d9c-93b6-fdd718e1fdbf",
+    "colId": "57e75e05-c336-4b4b-af77-31bc75ac7fbd",
+    "containerId": "",
+    "name": "Images: getAllImagesCar",
+    "url": "{{url}}/images/getAllImagesCar",
+    "method": "POST",
+    "sortNum": 7500,
+    "created": "2022-07-28T19:54:37.692Z",
+    "modified": "2022-07-28T19:55:12.362Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"6233117e87694ee07d4ace48\" }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "bcdb5913-218a-4b1a-9740-c747e97a93c3",
+    "colId": "327ef9db-087e-4772-afd5-9c764a204075",
+    "containerId": "",
+    "name": "Likes: cleanLikes",
+    "url": "{{url}}/likes/cleanLikes",
+    "method": "POST",
+    "sortNum": 12500,
+    "created": "2022-07-31T18:05:43.052Z",
+    "modified": "2022-07-31T18:06:40.854Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "7163280a-3039-45d5-916e-5db57f143047",
+    "colId": "58bd6682-ed79-426f-9338-029d7c2176ab",
+    "containerId": "",
+    "name": "Votes: createFakeVotes without Round",
+    "url": "{{url}}/votes/createFakeVotes",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-08-07T11:09:27.939Z",
+    "modified": "2022-08-07T15:00:47.093Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"total\": 5\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3ebccde8-7fb1-4bdc-a002-081838d41fc4",
+    "colId": "58bd6682-ed79-426f-9338-029d7c2176ab",
+    "containerId": "",
+    "name": "Votes: createFakeVotes with Round",
+    "url": "{{url}}/votes/createFakeVotes",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2022-08-07T15:03:29.434Z",
+    "modified": "2022-08-07T15:03:43.713Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"round\": \"62d2a0fcf0c1ea310d481319\",\n  \"total\": 1\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "03086a76-9fbc-46e6-9a5d-780df7ed3ec5",
+    "colId": "58bd6682-ed79-426f-9338-029d7c2176ab",
+    "containerId": "",
+    "name": "Votes: cleanVotes",
+    "url": "{{url}}/votes/cleanVotes",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-08-07T15:31:31.940Z",
+    "modified": "2022-08-07T15:35:32.065Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "1a0f889b-255c-4eda-833c-07d76d61258e",
+    "colId": "a1b85b23-24d9-4163-bbbb-948be52ad044",
+    "containerId": "",
+    "name": "Winners: getAllTournamentWinners",
+    "url": "{{url}}/winners/getAllTournamentWinners",
+    "method": "POST",
+    "sortNum": 7500,
+    "created": "2022-08-11T10:11:28.810Z",
+    "modified": "2022-08-17T08:28:48.781Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"{{tournamentId}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "91c24832-66d2-45c1-a528-46cb4c8962c3",
+    "colId": "a1b85b23-24d9-4163-bbbb-948be52ad044",
+    "containerId": "",
+    "name": "Winners: getAllCarWinners",
+    "url": "{{url}}/winners/getAllCarWinners",
+    "method": "POST",
+    "sortNum": 8750,
+    "created": "2022-08-11T10:12:05.278Z",
+    "modified": "2022-08-17T08:28:27.463Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\"id\": \"{{carId}}\"}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "2d43ca90-3552-40ec-b55a-fecddaf29fcb",
+    "colId": "a1b85b23-24d9-4163-bbbb-948be52ad044",
+    "containerId": "",
+    "name": "Winners: getAllUserWinners",
+    "url": "{{url}}/winners/getAllUserWinners",
+    "method": "POST",
+    "sortNum": 9375,
+    "created": "2022-08-11T10:16:39.669Z",
+    "modified": "2022-08-17T08:28:37.236Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\"id\": \"{{userId}}\"}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1ecc59d8-a651-4383-82ee-cff6bd0dc722",
+    "colId": "f0687248-d792-4542-b41e-f488caca5247",
+    "containerId": "",
+    "name": "Inscriptions: getAllTournamentInscriptions",
+    "url": "{{url}}/inscriptions/getAllTournamentInscriptions",
+    "method": "POST",
+    "sortNum": 3281.3,
+    "created": "2022-08-11T10:19:08.332Z",
+    "modified": "2022-08-11T10:28:41.401Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"{{tournamentId}}\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "cf022f18-edfc-4ee1-9194-e2518ba26701",
+    "colId": "f0687248-d792-4542-b41e-f488caca5247",
+    "containerId": "",
+    "name": "Inscriptions: getMyCarsForInscription",
+    "url": "{{url}}/inscriptions/getMyCarsForInscription",
+    "method": "POST",
+    "sortNum": 3593.8,
+    "created": "2022-08-11T10:20:04.433Z",
+    "modified": "2022-08-11T10:21:29.171Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"userId\": \"{{userId}}\", \"tournamentId\": \"{{tournamentId}}\" }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "ae2a2672-de8f-4d5c-91d7-fade169bfdac",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: getCarStats",
+    "url": "{{url}}/cars/getCarStats",
+    "method": "POST",
+    "sortNum": 12343.8,
+    "created": "2022-08-18T09:19:54.325Z",
+    "modified": "2022-08-18T09:57:25.915Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "2750b97e-c45e-4e4b-862a-5b367a800fe7",
+    "colId": "f988f835-0aa6-4411-afc0-0721a232715a",
+    "containerId": "",
+    "name": "Cars: search",
+    "url": "{{url}}/cars/search",
+    "method": "POST",
+    "sortNum": 12421.9,
+    "created": "2022-08-19T08:49:35.062Z",
+    "modified": "2022-08-19T09:38:19.147Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"JoseXS\",\n  \"limit\": 10\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "50e8e56f-8067-49e5-a46a-215778624d61",
+    "colId": "327ef9db-087e-4772-afd5-9c764a204075",
+    "containerId": "",
+    "name": "Likes: search",
+    "url": "{{url}}/likes/search",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2022-08-19T09:57:06.844Z",
+    "modified": "2022-08-19T10:42:54.782Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"Jose Gomez\",\n  \"limit\": 10\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "951c0bc8-c984-4b8c-812a-15e5df0a3820",
+    "colId": "04a579c4-febf-422b-a097-34095ee703e0",
+    "containerId": "",
+    "name": "Users: search",
+    "url": "{{url}}/users/search",
+    "method": "POST",
+    "sortNum": 18750,
+    "created": "2022-08-19T18:16:31.547Z",
+    "modified": "2022-08-19T19:13:24.101Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"value\": \"jose\",\n  \"limit\": 10\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
