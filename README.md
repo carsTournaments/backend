@@ -7,8 +7,9 @@
 <br />
 <div align="center">
 
-![Backend](https://github.com/josexs/carsTournaments-backend/actions/workflows/deploy.yml/badge.svg)
-![App](https://github.com/josexs/carsTournaments-app/actions/workflows/build.yml/badge.svg)
+![Backend](https://github.com/josexs/carsTournaments-backend/actions/workflows/deploy.yml/badge.svg) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=josexs_carsTournaments-backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=josexs_carsTournaments-backend)
+
+
 
 ![Node](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white) ![Ionic](https://img.shields.io/badge/Ionic-3880FF?style=for-the-badge&logo=ionic&logoColor=white) ![Como empezar](https://img.shields.io/badge/Capacitor-119EFF?style=for-the-badge&logo=Capacitor&logoColor=white)
 

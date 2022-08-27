@@ -76,15 +76,15 @@ export class SettingsService {
   ): { update: boolean; mandatory: boolean } {
     let update = false;
     let mandatory = false;
-    update = this.checkUpdate(versionApp, versionLatestDB, update);
-    mandatory = this.checkMandatory(versionApp, versionMinDB, mandatory);
+    update = this.checkVersionUpdate(versionApp, versionLatestDB, update);
+    mandatory = this.checkVersionMandatory(versionApp, versionMinDB, mandatory);
     return {
       update,
       mandatory,
     };
   }
 
-  private checkMandatory(
+  private checkVersionMandatory(
     versionApp: SettingsVersionCodeI,
     versionMinDB: SettingsVersionCodeI,
     mandatory: boolean
@@ -103,7 +103,7 @@ export class SettingsService {
     return mandatory;
   }
 
-  private checkUpdate(
+  private checkVersionUpdate(
     versionApp: SettingsVersionCodeI,
     versionLatestDB: SettingsVersionCodeI,
     update: boolean

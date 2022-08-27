@@ -11,7 +11,7 @@ if [ -z "$CI" ]; then
 fi
 
 if [ "${NODE_ENV}" = "development" ]; then
-    COMMAND="cd ${PATH_APPS_PRO}/carsTournaments-backend && npm run update"
+    COMMAND="cd /home/josexs/apps/carsTournaments-backend/carsTournaments-backend && npm run update"
     COMMANDS="bash -i -c '${COMMAND}'"
     if [ "$CI" = "true" ]; then
         echo "🔥  Actualizando desde CI"
@@ -30,7 +30,7 @@ else
     pm2 stop carsTournaments >/dev/null 2>&1
     PATH_BACKEND="${PATH_APPS_PRO}/carsTournaments-backend"
     echo "🔥  Actualizando backend desde Produccion"
-    cd $PATH_BACKEND && git pull >/dev/null 2>&1
+    cd /home/josexs/apps/carsTournaments-backend && git pull >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo "✅  Pull finalizado"
     else
