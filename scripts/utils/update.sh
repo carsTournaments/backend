@@ -28,7 +28,7 @@ if [ "${NODE_ENV}" = "development" ]; then
     fi
 else
     pm2 stop carsTournaments >/dev/null 2>&1
-    PATH_BACKEND="${PATH_APPS_PRO}/carsTournaments-backend"
+    PATH_BACKEND="/home/josexs/apps/carsTournaments-backend"
     echo "🔥  Actualizando backend desde Produccion"
     cd /home/josexs/apps/carsTournaments-backend && git pull >/dev/null 2>&1
     if [ $? -eq 0 ]; then
