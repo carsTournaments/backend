@@ -2351,5 +2351,24 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "da0732c4-caee-488a-bdad-c6c3ca367777",
+    "colId": "98eb6894-6ebe-46b6-9555-865f43e19606",
+    "containerId": "",
+    "name": "Pairings: getAllTournamentPairings Copy",
+    "url": "{{url}}/pairings/one",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-08-27T17:13:34.245Z",
+    "modified": "2022-08-27T17:13:47.763Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{ \"id\": \"62d2a0fcf0c1ea310d481314\" }",
+      "form": []
+    },
+    "tests": []
   }
 ]
