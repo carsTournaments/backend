@@ -6,20 +6,11 @@ clear
 logo
 echo "🔥  Actualizando backend de produccion"
 
-if [ -z "$CI" ]; then
-    CI=false
-fi
-
 if [ "${NODE_ENV}" = "development" ]; then
-    COMMAND="cd /home/josexs/apps/carsTournaments-backend/carsTournaments-backend && npm run update"
+    COMMAND="cd /home/josexs/apps/carsTournaments-backend && npm run update"
     COMMANDS="bash -i -c '${COMMAND}'"
-    if [ "$CI" = "true" ]; then
-        echo "🔥  Actualizando desde CI"
-        ssh -i ${SSH_KEY} -p ${SSH_PORT} ${SSH_HOST} ${COMMANDS} >/dev/null 2>&1
-    else
-        echo "🔥  Actualizando desde local"
-        ssh ${SSH_HOST} ${COMMANDS} >/dev/null 2>&1
-    fi
+    echo "🔥  Actualizando desde local"
+    ssh ${SSH_HOST} ${COMMANDS} 
     if [ $? -eq 0 ]; then
         echo "✅  Actualizacion de backend desde local finalizada"
     else
