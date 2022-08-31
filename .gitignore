@@ -8,7 +8,8 @@ scripts/error.log
 .env
 .nyc*
 changelog.md
-coverage
+coverage/lcov-report
+coverage/coverage-final.json
 googleanalytics-credentials.json
 yarn-error.log
 thunder/thunderEnvironment.json
