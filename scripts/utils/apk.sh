@@ -4,6 +4,7 @@
 
 source $(pwd)/scripts/setenv.sh
 source $(pwd)/scripts/utils/utils.sh
+exec 2>$(pwd)/scripts/error.log
 source ~/.env/.alias
 
 INSTALL=${1}
@@ -23,8 +24,8 @@ checkADB() {
 }
 
 generateApk() {
-    jdk 11 >/dev/null 2>&1
-    cd ${PATH_APP} && npm run generate:apk:release >/dev/null 2>&1
+    jdk 11 >/dev/null
+    cd ${PATH_APP} && npm run generate:apk:release >/dev/null
     if [ $? -eq 0 ]; then
         echo "✅ Build finalizado"
     else
@@ -34,7 +35,7 @@ generateApk() {
 }
 
 zipApk() {
-    zipalign 4 $PATH_UNSIGNED $PATH_SIGNED >/dev/null 2>&1
+    zipalign 4 $PATH_UNSIGNED $PATH_SIGNED >/dev/null
     if [ $? -eq 0 ]; then
         echo "✅ Zip finalizado"
     else
@@ -43,7 +44,7 @@ zipApk() {
     fi
 }
 signApk() {
-    apksigner sign --ks-pass pass:$PASS_KEYSTORE --key-pass pass:$PASS_KEYSTORE --ks $PATH_KEYSTORE $PATH_SIGNED >/dev/null 2>&1
+    apksigner sign --ks-pass pass:$PASS_KEYSTORE --key-pass pass:$PASS_KEYSTORE --ks $PATH_KEYSTORE $PATH_SIGNED >/dev/null
     if [ $? -eq 0 ]; then
         echo "✅ Firma finalizada"
         echo "💎 Ruta APK: $PATH_SIGNED"
@@ -55,7 +56,7 @@ signApk() {
 
 installApk() {
     if [ ${INSTALL} ]; then
-        adb install -r --no-incremental $PATH_SIGNED >/dev/null 2>&1
+        adb install -r --no-incremental $PATH_SIGNED >/dev/null
         if [ $? -eq 0 ]; then
             echo "✅ Instalacion finalizada"
         else
@@ -65,8 +66,22 @@ installApk() {
     fi
 }
 
-clear
+# clear
 logo
+echo '>>>                       [20%]\r\n'
+# some task
+sleep 2
+echo '>>>>>>>                   [40%]\r\n'
+# some task
+sleep 2
+echo '>>>>>>>>>>>>>>            [60%]\r\n'
+# some task
+sleep 2
+echo '>>>>>>>>>>>>>>>>>>>>>>>   [80%]\r\n'
+# some task
+sleep 2
+echo '>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\r\n'
+echo '\n'
 checkADB
 echo "🔨 Generando APK"
 generateApk
