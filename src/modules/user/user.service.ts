@@ -153,17 +153,13 @@ export class UserService {
     return new Promise(async (resolve, reject) => {
       try {
         const item = await User.findById(id).exec();
-        if (item) {
-          if (item.password) {
-            item.password = undefined;
-          }
-          this.cacheService.set('user.getOne', id, JSON.stringify(item));
-          resolve(item);
-        } else {
-          reject({ message: 'El id no existe' });
+        if (item.password) {
+          item.password = undefined;
         }
+        this.cacheService.set('user.getOne', id, JSON.stringify(item));
+        resolve(item);
       } catch (error) {
-        reject(error);
+        reject({ message: 'Error al obtener el usuario' });
       }
     });
   }

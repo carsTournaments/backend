@@ -1,5 +1,5 @@
 import { api } from '@testing/helpers/app.helper';
-import { getAllFromBrands, getAllFromUsers } from '@testing/helpers/helpers';
+import { getAllFromBrands, getAllFromCars, getAllFromUsers } from '@testing/helpers/helpers';
 import { bodyCarGetAll } from '@testing/mocks/body.mock';
 import { brands, cars, users } from '@testing/mocks/models.mock';
 import { User } from '@user';
@@ -45,15 +45,15 @@ describe('Car', () => {
 
     // TODO: No esta devolviendo items pero si totales (2), en db si existen items
 
-    // test('cars and pagination', async () => {
-    //     const { items } = await getAllFromCars();
-    //     // expect(items).toHaveLength(cars.length);
-    // });
+    xtest('cars and pagination', async () => {
+        const { items } = await getAllFromCars();
+        expect(items).toHaveLength(cars.length);
+    });
 
-    // test('the first car model is Perro', async () => {
-    //     const { models } = await getAllFromCars();
-    //     expect(models).toContain('Perro');
-    // });
+    xtest('the first car model is Perro', async () => {
+        const { models } = await getAllFromCars();
+        expect(models).toContain('Perro');
+    });
   });
 
   afterAll(() => {
