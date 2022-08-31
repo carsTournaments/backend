@@ -1,10 +1,9 @@
 import Redis from 'ioredis';
 import { CacheRoutes, CacheI, CacheGetAllI } from '@cache';
-import { Logger, UtilsService } from '@services';
+import { Logger } from '@services';
 import moment from 'moment';
 
 export class CacheService {
-  private utilsService = new UtilsService();
   private cache: Redis;
 
   create(): void {
@@ -71,7 +70,7 @@ export class CacheService {
         const size: any = new TextEncoder().encode(itemCache).length;
         const item: CacheGetAllI = {
           name: key,
-          size: this.utilsService.bytesToSize(size, 2),
+          size: this.bytesToSize(size),
           expiration: value.format('YYYY-MM-DD HH:mm:ss'),
         };
 
@@ -134,5 +133,14 @@ export class CacheService {
       Logger.error(error);
       return error;
     }
+  }
+
+  private bytesToSize(bytes: number, ): string {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const dm = 2
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 }

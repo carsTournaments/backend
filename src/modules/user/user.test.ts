@@ -1,10 +1,9 @@
-import { UserCreateDto } from './user.dto';
-import { bodyGetAll } from '@testing/mocks/body.mock';
-import { getAllFromUsers } from '@testing/helpers/helpers';
-import { User } from '@user';
-import mongoose from 'mongoose';
+import { User, UserCreateDto } from '@user';
 import { users } from '@testing/mocks/models.mock';
 import { api } from '@testing/helpers/app.helper';
+import { bodyGetAll } from '@testing/mocks/body.mock';
+import { getAllFromUsers } from '@testing/helpers/helpers';
+import mongoose from 'mongoose';
 
 describe('User', () => {
   beforeEach(async () => {
@@ -17,11 +16,10 @@ describe('User', () => {
 
   describe('Get all users', () => {
     test('users and pagination', async () => {
-      await api
-        .post('/users/getAll')
-        .send(bodyGetAll)
-        .expect(200)
-        .expect('Content-type', /application\/json/);
+      const response = await api.post('/users/getAll').send(bodyGetAll);
+
+      expect(response.status).toBe(200);
+      expect(response.body.items).toHaveLength(users.length);
     });
 
     test('tournaments and pagination', async () => {
@@ -56,11 +54,11 @@ describe('User', () => {
     });
   });
 
-  describe('Get resume', () => {
-    test('getResume', async () => {
-      await api.post('/users/getResume').expect(200);
+    describe('Get resume', () => {
+      test('getResume', async () => {
+        await api.post('/users/getResume').expect(200);
+      });
     });
-  });
 
   describe('Create user', () => {
     test('a valid user be added', async () => {

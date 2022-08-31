@@ -1,7 +1,6 @@
 import compression from 'compression';
 import cors from 'cors';
 import methodOverride from 'method-override';
-import mongoose from 'mongoose';
 import express from 'express';
 import serveIndex from 'serve-index';
 import bodyParser from 'body-parser';
@@ -19,16 +18,6 @@ export class AppService {
   private cacheService = new CacheService();
   constructor(app: express.Application) {
     this.app = app;
-  }
-
-  connectToDB(): void {
-    try {
-      mongoose.connect(Config.mongo.uri, Config.mongo.options, () => {
-        Logger.info('Conectado a MongoDB');
-      });
-    } catch (error) {
-      Logger.error('No se pudo conectar a MongoDB, revisa .env');
-    }
   }
 
   enablePromClient(app: express.Application): void {
@@ -59,12 +48,6 @@ export class AppService {
       },
     });
     app.use(metricsMiddleware);
-  }
-
-  initializeControllers(controllers: any[]) {
-    controllers.forEach((controller) => {
-      this.app.use('/', controller.router);
-    });
   }
 
   initStaticRoutes(app: express.Application): void {
