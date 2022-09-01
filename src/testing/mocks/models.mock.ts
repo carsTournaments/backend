@@ -95,5 +95,5 @@ export const users: UserI[] = [
 ];
 
 export const getUsersDB = async () => {
-  return await User.find({});
+  return User.find({});
 };

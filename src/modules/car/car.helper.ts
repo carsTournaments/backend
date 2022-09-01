@@ -260,35 +260,38 @@ export class CarHelper {
   ) {
     const carType = car[type];
     for (const category of categories) {
+      let newItem: CarStatsItemI;
       for (let item of category.items) {
         switch (type) {
           case 'stock':
-            item = this.setStockForCarStats(car, item);
+            newItem = this.setStockForCarStats(car, item);
             break;
           case 'year':
-            item = this.setYearsForCarStats(car, item);
+            newItem = this.setYearsForCarStats(car, item);
             break;
           case 'cc':
-            item = this.setCCForCarStats(car, item);
+            newItem = this.setCCForCarStats(car, item);
             break;
           case 'cv':
-            item = this.setCVForCarStats(car, item);
+            newItem = this.setCVForCarStats(car, item);
             break;
           case 'brand':
-            item = this.setBrandForCarStats(car, item);
+            newItem = this.setBrandForCarStats(car, item);
             break;
           case 'country':
-            item = this.setCountryForCarStats(car, item);
+            newItem = this.setCountryForCarStats(car, item);
             break;
           case 'continent':
-            item = this.setContinentForCarStats(car, item);
+            newItem = this.setContinentForCarStats(car, item);
             break;
           default:
             if (item.name === carType) {
               item.value++;
             }
+            newItem = item;
             break;
         }
+        item = newItem;
 
         category.items.sort((a: any, b: any) => b.value - a.value);
       }
