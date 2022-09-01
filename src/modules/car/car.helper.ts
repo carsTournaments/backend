@@ -258,45 +258,47 @@ export class CarHelper {
     car: any,
     categories: CarStatsI[]
   ) {
-    const carType = car[type];
     for (const category of categories) {
-      let newItem: CarStatsItemI;
       for (let item of category.items) {
-        switch (type) {
-          case 'stock':
-            newItem = this.setStockForCarStats(car, item);
-            break;
-          case 'year':
-            newItem = this.setYearsForCarStats(car, item);
-            break;
-          case 'cc':
-            newItem = this.setCCForCarStats(car, item);
-            break;
-          case 'cv':
-            newItem = this.setCVForCarStats(car, item);
-            break;
-          case 'brand':
-            newItem = this.setBrandForCarStats(car, item);
-            break;
-          case 'country':
-            newItem = this.setCountryForCarStats(car, item);
-            break;
-          case 'continent':
-            newItem = this.setContinentForCarStats(car, item);
-            break;
-          default:
-            if (item.name === carType) {
-              item.value++;
-            }
-            newItem = item;
-            break;
-        }
-        item = newItem;
-
+        item = this.setStatsItem(type, item, car);
         category.items.sort((a: any, b: any) => b.value - a.value);
       }
     }
     return categories;
+  }
+
+  private setStatsItem(
+    type: string,
+    item: CarStatsItemI,
+    car: any
+  ): CarStatsItemI {
+    let newItem: CarStatsItemI;
+    switch (type) {
+      case 'stock':
+        newItem = this.setStockForCarStats(car, item);
+        break;
+      case 'year':
+        newItem = this.setYearsForCarStats(car, item);
+        break;
+      case 'cc':
+        newItem = this.setCCForCarStats(car, item);
+        break;
+      case 'cv':
+        newItem = this.setCVForCarStats(car, item);
+        break;
+      case 'brand':
+        newItem = this.setBrandForCarStats(car, item);
+        break;
+      case 'country':
+        newItem = this.setCountryForCarStats(car, item);
+        break;
+      case 'continent':
+        newItem = this.setContinentForCarStats(car, item);
+        break;
+      default:
+        break;
+    }
+    return newItem;
   }
 
   private setStockForCarStats(car: CarI, item: CarStatsItemI) {
