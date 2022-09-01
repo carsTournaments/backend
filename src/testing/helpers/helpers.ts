@@ -32,7 +32,6 @@ export const getAllFromTournaments = async (): Promise<{
   return { items: response.body.items, status };
 };
 
-// Deprecar?
 export const getAllFromUsers = async (): Promise<{
   items: UserI[];
   roles: string[];

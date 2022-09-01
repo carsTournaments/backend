@@ -10,7 +10,7 @@ const levels = {
 
 const level = () => {
   const env = process.env.NODE_ENV || 'development';
-    let level = 'error';
+  let level = 'error';
   if (env === 'development') {
     level = 'debug';
   } else if (env === 'production') {

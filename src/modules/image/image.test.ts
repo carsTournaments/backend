@@ -12,7 +12,7 @@ import { User } from '@user';
 import mongoose from 'mongoose';
 import { Image } from './image.model';
 
-xdescribe('Image', () => {
+describe('Image', () => {
   beforeEach(async () => {
     const modelsForDeleted: any = [Image, Car, Brand, User];
     for (const model of modelsForDeleted) {

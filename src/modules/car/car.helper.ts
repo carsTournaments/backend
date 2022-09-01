@@ -290,9 +290,7 @@ export class CarHelper {
             break;
         }
 
-        category.items.sort(
-          (a: any, b: any) => b.value - a.value
-        );
+        category.items.sort((a: any, b: any) => b.value - a.value);
       }
     }
     return categories;

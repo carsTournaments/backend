@@ -11,6 +11,6 @@ export const bodyGetAll: GetAllDto = {
 export const bodyCarGetAll: CarGetAllDto = {
   page: 1,
   pageSize: 20,
-  site: 'admin',
+  site: 'user',
   order: ['created', 'asc'],
 };

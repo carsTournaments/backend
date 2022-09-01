@@ -1,3 +1,4 @@
+import { User } from '@user';
 import { UserTokenI } from '@auth';
 import { Config } from '@core/config/app.config';
 import { users } from '@testing/mocks/models.mock';
@@ -13,6 +14,7 @@ export const checkUserToken = async (
 ): Promise<void> => {
   const userToken = req.get('XSToken') || '';
   if (Config.env === 'test') {
+    const users = await User.find({});
     req.user = users[0];
     next();
   } else {

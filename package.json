@@ -24,7 +24,7 @@
     "start:dev": "NODE_ENV=development nodemon",
     "lint": "eslint \"**/*.{ts,tsx}\" --fix",
     "test": "NODE_ENV=test jest --verbose --coverage --silent",
-    "test:watch": "NODE_ENV=test jest --verbose --watch --detectOpenHandles",
+    "test:watch": "NODE_ENV=test jest --verbose --watchAll --detectOpenHandles",
     "prepare:husky": "husky install",
     "prettier:list": "prettier --list-different \"./{e2e,src}/**/*.{scss,ts}\" || ECHO .",
     "prettier:write": "prettier --write \"./{e2e,src}/**/*.{scss,ts}\"",

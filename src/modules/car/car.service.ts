@@ -170,6 +170,7 @@ export class CarService {
       try {
         let item: CarI;
         const aggregate = carGetOneAggregate(data.id);
+        console.log(aggregate);
         if (user) {
           if (data.site === 'admin' && user.role === 'ADMIN') {
             item = await this.helper.getOneForAdmin(
@@ -178,11 +179,7 @@ export class CarService {
               reject
             );
           } else {
-            item = await this.helper.getOneForUser(
-              aggregate,
-              user,
-              reject
-            );
+            item = await this.helper.getOneForUser(aggregate, user, reject);
           }
         } else {
           item = await this.helper.getOneAggregate(aggregate, reject);

@@ -4,11 +4,13 @@ import { Logger } from '@services';
 import { NextFunction, Response } from 'express';
 import { CacheService } from '@cache';
 
-const cacheService = new CacheService();
-
 export const verifyCache = (name: string): express.RequestHandler => {
   return async (req: RequestExtendedI, res: Response, next: NextFunction) => {
     try {
+      if (process.env.NODE_ENV === 'test') {
+        return next();
+      }
+      const cacheService = new CacheService();
       const item: CacheI = cacheService.findByName(name);
       if (item) {
         let cacheName = item.value;
