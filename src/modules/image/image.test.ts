@@ -9,16 +9,16 @@ import {
 import { bodyGetAll } from '@testing/mocks/body.mock';
 import { brands, cars, images, users } from '@testing/mocks/models.mock';
 import { User } from '@user';
-import mongoose from 'mongoose';
+import { clearDatabase, closeDatabase } from '../../db';
+import supertest from 'supertest';
 import { Image } from './image.model';
 
 describe('Image', () => {
+  let apiTest: supertest.SuperTest<supertest.Test>;
+  beforeAll(async () => (apiTest = api));
+  afterEach(async () => await clearDatabase());
+  afterAll(async () => await closeDatabase());
   beforeEach(async () => {
-    const modelsForDeleted: any = [Image, Car, Brand, User];
-    for (const model of modelsForDeleted) {
-      await model.deleteMany({}).exec();
-    }
-
     for (const user of users) {
       const item = new User(user);
       await item.save();
@@ -50,7 +50,7 @@ describe('Image', () => {
 
   describe('Get all images', () => {
     test('images and pagination', async () => {
-      await api
+      await apiTest
         .post('/images/getAll')
         .send(bodyGetAll)
         .expect(200)
@@ -58,7 +58,4 @@ describe('Image', () => {
     });
   });
 
-  afterAll(() => {
-    mongoose.connection.close();
-  });
 });
