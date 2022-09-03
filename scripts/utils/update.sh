@@ -3,11 +3,14 @@ source $(pwd)/scripts/utils/utils.sh
 exec 2>$(pwd)/scripts/error.log
 
 clear
-logo
+if [ "${NODE_ENV}" = "development" ]; then
+    logo
+fi
+
 echo "🔥  Actualizando backend de produccion"
 
 if [ "${NODE_ENV}" = "development" ]; then
-    COMMAND="cd /home/josexs/apps/carsTournaments-backend/carsTournaments-backend && npm run update"
+    COMMAND="cd /home/josexs/apps/carsTournaments-backend && npm run update"
     COMMANDS="bash -i -c '${COMMAND}'"
   
     echo "🔥  Actualizando desde local"
