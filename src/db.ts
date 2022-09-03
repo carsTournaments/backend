@@ -7,12 +7,12 @@ let mongoServer: MongoMemoryServer;
 mongoose.Promise = Promise;
 
 export const getUri = async () => {
-  mongoServer = await MongoMemoryServer.create();
   if (process.env.NODE_ENV === 'test') {
+    mongoServer = await MongoMemoryServer.create();
     return mongoServer.getUri();
+  } else {
+    return Config.mongo.uri;
   }
-
-  return Config.mongo.uri;
 };
 
 export const connectToDB = async (): Promise<void> => {
