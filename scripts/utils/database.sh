@@ -2,6 +2,7 @@
 
 source $(pwd)/scripts/setenv.sh
 source $(pwd)/scripts/utils/utils.sh
+exec 2>$(pwd)/scripts/error.log
 
 TYPE=${1} # proToUat / proToTest / uatToPro / uatToTest
 
