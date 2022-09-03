@@ -256,7 +256,7 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-03-17T09:06:02.001Z",
-    "modified": "2022-03-17T09:07:06.670Z",
+    "modified": "2022-09-01T11:56:56.436Z",
     "headers": [
       {
         "name": "XSToken",
@@ -266,7 +266,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\": \"Prueba3\",\n    \"email\": \"prueba@prueba.es\",\n    \"role\": \"USER\",\n    \"password\": \"pepe\"\n}",
+      "raw": "{\n    \"name\": \"Prueba3\",\n    \"email\": \"prueba@prueba.es\",\n    \"country\": \"pepe\"\n}",
       "form": []
     },
     "tests": []
@@ -371,12 +371,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-03-17T10:41:04.640Z",
-    "modified": "2022-05-13T11:20:35.813Z",
+    "modified": "2022-09-01T16:42:28.760Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{{getAllBody}}",
+      "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"site\": \"app\",\n  \"order\": [\n    \"created\",\n    \"desc\"\n  ],\n  \"onlyWithPhoto\": false\n}",
       "form": []
     },
     "tests": []

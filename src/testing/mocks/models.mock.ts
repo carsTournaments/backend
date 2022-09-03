@@ -3,7 +3,7 @@ import { CarI } from '@car';
 import { ImageI } from '@image';
 import { randFullName, randEmail } from '@ngneat/falso';
 import { TournamentI } from '@tournament';
-import { UserI } from '@user';
+import { User, UserI } from '@user';
 
 export const brands: BrandI[] = [
   {
@@ -93,3 +93,7 @@ export const users: UserI[] = [
     country: 'es',
   },
 ];
+
+export const getUsersDB = async () => {
+  return User.find({});
+};
