@@ -163,10 +163,10 @@ export class UserService {
       }
     });
   }
-  async create(body: UserI): Promise<UserI> {
+  create(body: UserI): Promise<UserI> {
     try {
       const item = new User(body);
-      return await item.save();
+      return item.save();
     } catch (error) {
       return error;
     }

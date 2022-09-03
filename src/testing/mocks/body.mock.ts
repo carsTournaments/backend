@@ -8,9 +8,16 @@ export const bodyGetAll: GetAllDto = {
   order: ['created', 'asc'],
 };
 
-export const bodyCarGetAll: CarGetAllDto = {
+export const bodyGetAllUser: GetAllDto = {
   page: 1,
   pageSize: 20,
   site: 'admin',
+  order: ['created', 'asc'],
+};
+
+export const bodyCarGetAll: CarGetAllDto = {
+  page: 1,
+  pageSize: 20,
+  site: 'user',
   order: ['created', 'asc'],
 };
