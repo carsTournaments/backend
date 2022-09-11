@@ -7,9 +7,9 @@
 <br />
 <div align="center">
 
-![Deploy](https://github.com/josexs/carsTournaments-backend/actions/workflows/deploy.yml/badge.svg) ![CI](https://github.com/josexs/carsTournaments-backend/actions/workflows/ci.yml/badge.svg)
+![Deploy](https://github.com/carsTournaments/backend/actions/workflows/deploy.yml/badge.svg) ![CI](https://github.com/carsTournaments/backend/actions/workflows/ci.yml/badge.svg)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=josexs_carsTournaments-backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=josexs_carsTournaments-backend) [![codecov](https://codecov.io/gh/josexs/carsTournaments-backend/branch/feature/testing/graph/badge.svg?token=A738EDBZ4N)](https://codecov.io/gh/josexs/carsTournaments-backend) [![Hits-of-Code](https://hitsofcode.com/github/josexs/carstournaments-backend?branch=master)](https://hitsofcode.com/github/carstournaments/backend/view?branch=master)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=josexs_carsTournaments-backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=josexs_carsTournaments-backend) [![codecov](https://codecov.io/gh/josexs/carsTournaments-backend/branch/feature/testing/graph/badge.svg?token=A738EDBZ4N)](https://codecov.io/gh/carsTournaments/backend) [![Hits-of-Code](https://hitsofcode.com/github/josexs/carstournaments-backend?branch=master)](https://hitsofcode.com/github/carstournaments/backend/view?branch=master)
 
 ![GitHub issues by-label](https://img.shields.io/github/issues/carstournaments/backend/bug?label=Bugs&style=plastic)
 
