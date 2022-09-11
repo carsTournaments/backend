@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./images/logo.png" width="200" />
+  <img src="./images/banner.png" />
 </div>
 <div align="center">
   ⚡️ Torneos de coches basados en votos ⚡️
