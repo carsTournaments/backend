@@ -249,21 +249,23 @@ export class WinnerService {
     }
   }
 
-  async deleteOfTournament(tournamentId: string): Promise<MessageI> {
-    try {
-      const winner = await this.getForTournament(tournamentId);
-      if (winner) {
-        await this.deleteOne(winner._id);
-        return {
-          message: `Ganadores del torneo ${tournamentId} eliminados`,
-        };
-      } else {
-        throw {
-          message: `No hay ganadores para el torneo ${tournamentId}`,
-        };
+  deleteOfTournament(tournamentId: string): Promise<MessageI> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const winner = await this.getForTournament(tournamentId);
+        if (winner) {
+          await this.deleteOne(winner._id);
+          resolve({
+            message: `Ganadores del torneo ${tournamentId} eliminados`,
+          });
+        } else {
+          reject({
+            message: `No hay ganadores para el torneo ${tournamentId}`,
+          });
+        }
+      } catch (error) {
+        return error;
       }
-    } catch (error) {
-      return error;
-    }
+    });
   }
 }
