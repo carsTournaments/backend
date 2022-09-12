@@ -283,7 +283,6 @@ export class TournamentService {
   async create(body: TournamentCreateDto): Promise<TournamentI> {
     return new Promise(async (resolve, reject) => {
       try {
-        // TODO: Validaciones
         if (this.isItemValid(body)) {
           const item = new Tournament(body);
           this.cacheService.deleteByCategory('tournament');
@@ -301,7 +300,6 @@ export class TournamentService {
     if (item.name === '') {
       return false;
     }
-    // TODO: Añadir validacion por rondas, requisitos, y alguna cosa mas
     return true;
   }
 

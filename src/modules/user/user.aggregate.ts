@@ -1,3 +1,9 @@
+import {
+  lookupCarsCount,
+  lookupInscriptionsCount,
+  lookupLikesCount,
+  lookupVotesCount,
+} from '@aggregates';
 import { GetAllDto, SearchDto } from '@dtos';
 import { UtilsService } from '@services';
 
@@ -9,42 +15,10 @@ export const userGetAllAggregate = (
 ): any => {
   const sort = utilsService.getOrderForGetAllAggregate(body);
   return [
-    {
-      $lookup: {
-        from: 'cars',
-        localField: '_id',
-        foreignField: 'driver',
-        as: 'cars',
-        pipeline: [{ $count: 'count' }, { $project: { count: 1, _id: 0 } }],
-      },
-    },
-    {
-      $lookup: {
-        from: 'likes',
-        localField: '_id',
-        foreignField: 'user',
-        as: 'likes',
-        pipeline: [{ $count: 'count' }, { $project: { count: 1, _id: 0 } }],
-      },
-    },
-    {
-      $lookup: {
-        from: 'votes',
-        localField: '_id',
-        foreignField: 'user',
-        as: 'votes',
-        pipeline: [{ $count: 'count' }, { $project: { count: 1, _id: 0 } }],
-      },
-    },
-    {
-      $lookup: {
-        from: 'inscriptions',
-        localField: '_id',
-        foreignField: 'driver',
-        as: 'inscriptions',
-        pipeline: [{ $count: 'count' }, { $project: { count: 1, _id: 0 } }],
-      },
-    },
+    lookupCarsCount(),
+    lookupLikesCount('user'),
+    lookupVotesCount('user'),
+    lookupInscriptionsCount('driver'),
     { $unwind: { path: '$cars', preserveNullAndEmptyArrays: true } },
     { $unwind: { path: '$likes', preserveNullAndEmptyArrays: true } },
     { $unwind: { path: '$votes', preserveNullAndEmptyArrays: true } },
@@ -54,11 +28,11 @@ export const userGetAllAggregate = (
     { $limit: pageSize },
     {
       $project: {
+        _id: 1,
         cars: 1,
         likes: 1,
         inscriptions: 1,
         votes: 1,
-        _id: 1,
         name: 1,
         country: 1,
         email: 1,
@@ -73,42 +47,10 @@ export const userGetAllAggregate = (
 };
 
 export const userSearchAggregate = (data: SearchDto): any => [
-  {
-    $lookup: {
-      from: 'cars',
-      localField: '_id',
-      foreignField: 'driver',
-      as: 'cars',
-      pipeline: [{ $count: 'count' }, { $project: { count: 1, _id: 0 } }],
-    },
-  },
-  {
-    $lookup: {
-      from: 'likes',
-      localField: '_id',
-      foreignField: 'user',
-      as: 'likes',
-      pipeline: [{ $count: 'count' }, { $project: { count: 1, _id: 0 } }],
-    },
-  },
-  {
-    $lookup: {
-      from: 'votes',
-      localField: '_id',
-      foreignField: 'user',
-      as: 'votes',
-      pipeline: [{ $count: 'count' }, { $project: { count: 1, _id: 0 } }],
-    },
-  },
-  {
-    $lookup: {
-      from: 'inscriptions',
-      localField: '_id',
-      foreignField: 'driver',
-      as: 'inscriptions',
-      pipeline: [{ $count: 'count' }, { $project: { count: 1, _id: 0 } }],
-    },
-  },
+  lookupCarsCount(),
+  lookupLikesCount('user'),
+  lookupVotesCount('user'),
+  lookupInscriptionsCount('driver'),
   { $unwind: { path: '$cars', preserveNullAndEmptyArrays: true } },
   { $unwind: { path: '$likes', preserveNullAndEmptyArrays: true } },
   { $unwind: { path: '$votes', preserveNullAndEmptyArrays: true } },

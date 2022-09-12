@@ -83,7 +83,19 @@ export const lookupImages = (
   };
 };
 
-export const lookupInscriptionsCount = (type: 'car' | 'tournament') => {
+export const lookupCarsCount = () => {
+  return {
+    $lookup: {
+      from: 'cars',
+      localField: '_id',
+      foreignField: 'driver',
+      as: 'cars',
+      pipeline: [{ $count: 'count' }, { $project: { count: 1, _id: 0 } }],
+    },
+  };
+};
+
+export const lookupInscriptionsCount = (type: 'car' | 'tournament' | 'driver') => {
   return {
     $lookup: {
       from: 'inscriptions',
@@ -95,7 +107,7 @@ export const lookupInscriptionsCount = (type: 'car' | 'tournament') => {
   };
 };
 
-export const lookupLikesCount = (type: 'car') => {
+export const lookupLikesCount = (type: 'car' | 'user') => {
   return {
     $lookup: {
       from: 'likes',
@@ -107,7 +119,7 @@ export const lookupLikesCount = (type: 'car') => {
   };
 };
 
-export const lookupVotesCount = (type: 'car' | 'tournament') => {
+export const lookupVotesCount = (type: 'car' | 'tournament' | 'user') => {
   return {
     $lookup: {
       from: 'votes',
