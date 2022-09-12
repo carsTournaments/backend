@@ -21,15 +21,14 @@ export class AppService {
   }
 
   enablePromClient(app: express.Application): void {
+    const regUploads = /(?<=[^w/]|^)[w/]uploads/;
+    const regAdmin = /(?<=[^w/]|^)[w/]admin/;
+    const regApp = /(?<=[^w/]|^)[w/]app/;
     const originalNormalize = promBundle.normalizePath;
     const metricsMiddleware = promBundle({
       includeMethod: true,
       includePath: true,
-      excludeRoutes: [
-        new RegExp('(?<=[^w/]|^)[w/]uploads'),
-        new RegExp('(?<=[^w/]|^)[w/]admin'),
-        new RegExp('(?<=[^w/]|^)[w/]app'),
-      ],
+      excludeRoutes: [regUploads, regAdmin, regApp],
       promClient: {
         collectDefaultMetrics: {},
       },
