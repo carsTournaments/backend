@@ -1,21 +1,8 @@
 {
   "name": "carstournaments-backend",
-  "version": "0.6.7",
-  "description": "",
+  "version": "0.6.8",
   "engines": {
     "node": "16.14.0"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "**/*.spec.ts",
-      ".git",
-      "node_modules"
-    ],
-    "watch": [
-      "src"
-    ],
-    "exec": "node -r tsconfig-paths/register -r ts-node/register ./src/server.ts",
-    "ext": "ts, js"
   },
   "scripts": {
     "tsc": "sh ./scripts/create-dist.sh && tsc",
@@ -134,5 +121,17 @@
   ],
   "lint-staged": {
     "*.ts": "eslint --fix"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "node -r tsconfig-paths/register -r ts-node/register ./src/server.ts",
+    "ext": "ts, js"
   }
 }
