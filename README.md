@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./images/logo.png" width="200" />
+  <img src="./images/banner.png" />
 </div>
 <div align="center">
   ⚡️ Backend para CarsTournaments ⚡️
@@ -7,11 +7,11 @@
 <br />
 <div align="center">
 
-![Deploy](https://github.com/josexs/carsTournaments-backend/actions/workflows/deploy.yml/badge.svg) ![CI](https://github.com/josexs/carsTournaments-backend/actions/workflows/ci.yml/badge.svg)
+![Deploy](https://github.com/carsTournaments/backend/actions/workflows/deploy.yml/badge.svg) ![CI](https://github.com/carsTournaments/backend/actions/workflows/ci.yml/badge.svg)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=carsTournaments_backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=carsTournaments_backend) [![codecov](https://codecov.io/gh/carsTournaments/backend/branch/master/graph/badge.svg?token=A738EDBZ4N)](https://codecov.io/gh/carsTournaments/backend) [![Hits-of-Code](https://hitsofcode.com/github/carstournaments/backend?branch=master)](https://hitsofcode.com/github/carstournaments/backend/view?branch=master)
 
-![GitHub issues by-label](https://img.shields.io/github/issues/josexs/carstournaments-backend/bug?label=Bugs&style=plastic)
+![GitHub issues by-label](https://img.shields.io/github/issues/carstournaments/backend/bug?label=Bugs&style=plastic)
 
 <a href="https://twitter.com/CarsTournaments"><img src="https://img.shields.io/twitter/follow/CarsTournaments" /></a>
 

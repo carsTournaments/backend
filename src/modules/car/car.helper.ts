@@ -259,10 +259,10 @@ export class CarHelper {
     categories: CarStatsI[]
   ) {
     for (const category of categories) {
-      for (let item of category.items) {
-        item = this.setStatsItem(type, item, car);
+      category.items.forEach((item) => {
+        this.setStatsItem(type, item, car);
         category.items.sort((a: any, b: any) => b.value - a.value);
-      }
+      });
     }
     return categories;
   }

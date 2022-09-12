@@ -37,7 +37,7 @@ export class CacheService {
     }
   }
 
-  set(name: string, subname: string = null, value: string): void {
+  set(name: string, subname: string = null, value?: string): void {
     if (!this.cache) {
       this.create();
     }

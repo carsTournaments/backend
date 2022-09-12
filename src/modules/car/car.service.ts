@@ -136,7 +136,7 @@ export class CarService {
 
   async getCarStats(): Promise<any> {
     try {
-      const cars = await Car.find({}).populate(this.populateDefault);
+      const cars = await Car.find({}).populate(this.populateDefault).exec();
       let items = await this.helper.generateItemsForCarStats(cars);
       for (const car of cars) {
         items = this.helper.setForCarStats('fuel', car, items);
