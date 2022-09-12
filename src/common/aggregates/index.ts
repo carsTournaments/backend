@@ -6,5 +6,6 @@ export {
   lookupLikesCount,
   lookupVotesCount,
   lookupCar,
+  lookupCarsCount,
   lookupImages,
 } from './generic.aggregate';

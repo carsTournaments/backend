@@ -682,21 +682,40 @@ export class TournamentHelper {
           inscriptions = results;
         }
       } else {
-        const result = await this.checkAndSetWinnersOfRoundRandom(
+        ({ inscriptions, gold, silver } = await this.isNotAnyWinner(
           pairing,
           inscriptions,
           round,
-          final
-        );
-        if (final) {
-          gold = result.gold;
-          silver = result.silver;
-        } else {
-          inscriptions = result;
-        }
+          final,
+          gold,
+          silver
+        ));
       }
     } else {
       reject({ message: 'No hay inscripciones' });
+    }
+    return { inscriptions, gold, silver };
+  }
+
+  private async isNotAnyWinner(
+    pairing: PairingMongoI,
+    inscriptions: InscriptionI[],
+    round: RoundI,
+    final: boolean,
+    gold: CarI,
+    silver: CarI
+  ) {
+    const result = await this.checkAndSetWinnersOfRoundRandom(
+      pairing,
+      inscriptions,
+      round,
+      final
+    );
+    if (final) {
+      gold = result.gold;
+      silver = result.silver;
+    } else {
+      inscriptions = result;
     }
     return { inscriptions, gold, silver };
   }
