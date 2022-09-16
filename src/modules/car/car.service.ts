@@ -170,7 +170,6 @@ export class CarService {
       try {
         let item: CarI;
         const aggregate = carGetOneAggregate(data.id);
-        console.log(aggregate);
         if (user) {
           if (data.site === 'admin' && user.role === 'ADMIN') {
             item = await this.helper.getOneForAdmin(

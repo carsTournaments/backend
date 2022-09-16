@@ -35,7 +35,6 @@ describe('Car', () => {
   xdescribe('Get one car', () => {
     test('get a valid car', async () => {
       const carsDB = await Car.find({});
-      console.log(carsDB.length);
       const id = carsDB[0]._id.toString();
 
       await apiTest

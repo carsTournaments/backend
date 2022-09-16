@@ -8,4 +8,6 @@ export {
   lookupCar,
   lookupCarsCount,
   lookupImages,
+  lookupCarWinner,
+  lookupVotes,
 } from './generic.aggregate';
