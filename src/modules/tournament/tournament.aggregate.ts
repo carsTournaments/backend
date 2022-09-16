@@ -1,3 +1,4 @@
+import { lookupImages, lookupVotes } from '@aggregates';
 import {
   lookupInscriptionsCount,
   lookupImage,
@@ -75,23 +76,12 @@ export const tournamentGetPairingsForDate = () => {
               foreignField: '_id',
               as: 'car1',
               pipeline: [
-                {
-                  $lookup: {
-                    from: 'images',
-                    localField: '_id',
-                    foreignField: 'car',
-                    as: 'image',
-                    pipeline: [{ $project: { _id: 0, url: 1 } }],
-                  },
-                },
                 lookupBrand(),
-                {
-                  $unwind: { path: '$image', preserveNullAndEmptyArrays: true },
-                },
+                lookupImages('car'),
                 {
                   $unwind: { path: '$brand', preserveNullAndEmptyArrays: true },
                 },
-                { $project: { _id: 1, name: 1, image: 1, brand: 1, model: 1 } },
+                getProject(),
               ],
             },
           },
@@ -102,47 +92,22 @@ export const tournamentGetPairingsForDate = () => {
               foreignField: '_id',
               as: 'car2',
               pipeline: [
-                {
-                  $lookup: {
-                    from: 'images',
-                    localField: '_id',
-                    foreignField: 'car',
-                    as: 'image',
-                    pipeline: [{ $project: { _id: 0, url: 1 } }],
-                  },
-                },
                 lookupBrand(),
-                {
-                  $unwind: { path: '$image', preserveNullAndEmptyArrays: true },
-                },
+                lookupImages('car'),
                 {
                   $unwind: { path: '$brand', preserveNullAndEmptyArrays: true },
                 },
-                { $project: { _id: 1, name: 1, image: 1, brand: 1, model: 1 } },
+                getProject(),
               ],
             },
           },
-          {
-            $lookup: {
-              from: 'votes',
-              localField: '_id',
-              foreignField: 'pairing',
-              as: 'votes',
-              pipeline: [
-                { $project: { _id: 0, car: 1 } },
-                {
-                  $unwind: { path: '$votes', preserveNullAndEmptyArrays: true },
-                },
-              ],
-            },
-          },
+          lookupVotes('pairing'),
           { $unwind: { path: '$car1', preserveNullAndEmptyArrays: true } },
           { $unwind: { path: '$car2', preserveNullAndEmptyArrays: true } },
           { $project: { _id: 1, car1: 1, car2: 1, votes: 1 } },
         ],
       },
     },
-
     { $unwind: { path: '$pairings', preserveNullAndEmptyArrays: true } },
     { $unwind: { path: '$tournament', preserveNullAndEmptyArrays: true } },
     {
@@ -168,4 +133,16 @@ export const tournamentGetPairingsForDate = () => {
     },
     { $sort: { 'tournament.name': 1 } },
   ];
+};
+
+const getProject = () => {
+  return {
+    $project: {
+      _id: 1,
+      name: 1,
+      image: 1,
+      brand: 1,
+      model: 1,
+    },
+  };
 };

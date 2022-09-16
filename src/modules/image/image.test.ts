@@ -57,5 +57,4 @@ describe('Image', () => {
         .expect('Content-type', /application\/json/);
     });
   });
-
 });

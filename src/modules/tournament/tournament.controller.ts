@@ -42,7 +42,7 @@ export class TournamentController implements ControllerI {
     );
     this.router.post(
       `${this.path}/getCalendarItems`,
-      verifyCache('tournament.getCalendarItems'),
+    //   verifyCache('tournament.getCalendarItems'),
       this.getCalendarItems
     );
     this.router.post(`${this.path}/getOne`, this.getOne);

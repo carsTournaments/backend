@@ -1,9 +1,13 @@
-import { lookupImages } from './../../common/aggregates/generic.aggregate';
-import mongoose from 'mongoose';
 import {
   lookupImage,
   lookupDriver,
-} from '../../common/aggregates/generic.aggregate';
+  lookupImages,
+  lookupVotesCount,
+  lookupCarWinner,
+  lookupBrand,
+} from '@aggregates';
+import mongoose from 'mongoose';
+
 export const pairingGetAllAggregate = (
   sort: any,
   skip: number,
@@ -83,19 +87,7 @@ export const pairingGetOneAggregate = (id: string) => {
         foreignField: '_id',
         as: 'car1',
         pipeline: [
-          {
-            $lookup: {
-              from: 'brands',
-              localField: 'brand',
-              foreignField: '_id',
-              as: 'brand',
-              pipeline: [
-                lookupImage('brand'),
-                getUnwindImage(),
-                { $project: { name: 1, image: 1, country: 1, _id: 1 } },
-              ],
-            },
-          },
+          lookupBrand(),
           lookupDriver(),
           lookupImages('car'),
           { $unwind: { path: '$driver', preserveNullAndEmptyArrays: true } },
@@ -111,27 +103,7 @@ export const pairingGetOneAggregate = (id: string) => {
         foreignField: '_id',
         as: 'car2',
         pipeline: [
-          {
-            $lookup: {
-              from: 'brands',
-              localField: 'brand',
-              foreignField: '_id',
-              as: 'brand',
-              pipeline: [
-                {
-                  $lookup: {
-                    from: 'images',
-                    localField: '_id',
-                    foreignField: 'brand',
-                    as: 'image',
-                    pipeline: [{ $project: { url: 1, _id: 0 } }],
-                  },
-                },
-                getUnwindImage(),
-                { $project: { name: 1, image: 1, country: 1, _id: 1 } },
-              ],
-            },
-          },
+          lookupBrand(),
           lookupDriver(),
           lookupImages('car'),
           { $unwind: { path: '$driver', preserveNullAndEmptyArrays: true } },
@@ -155,20 +127,7 @@ export const pairingGetOneAggregate = (id: string) => {
     },
     getLookupTournament(),
     getLookupVotes(),
-    {
-      $lookup: {
-        from: 'cars',
-        localField: 'winner',
-        foreignField: '_id',
-        as: 'winner',
-        pipeline: [
-          getLookupBrand(),
-          lookupImages('car'),
-          { $unwind: { path: '$brand', preserveNullAndEmptyArrays: true } },
-          { $project: { model: 1, brand: 1, image: 1, _id: 1 } },
-        ],
-      },
-    },
+    lookupCarWinner(),
     { $unwind: { path: '$car1', preserveNullAndEmptyArrays: true } },
     { $unwind: { path: '$car2', preserveNullAndEmptyArrays: true } },
     { $unwind: { path: '$tournament', preserveNullAndEmptyArrays: true } },
@@ -176,12 +135,6 @@ export const pairingGetOneAggregate = (id: string) => {
     { $unwind: { path: '$winner', preserveNullAndEmptyArrays: true } },
     { $match: { _id: new mongoose.Types.ObjectId(id) } },
   ];
-};
-
-const getUnwindImage = () => {
-  return {
-    $unwind: { path: '$image', preserveNullAndEmptyArrays: true },
-  };
 };
 
 const getProject = () => {
