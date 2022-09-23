@@ -13,6 +13,7 @@ export interface ConfigI {
   paths: {
     project: string;
     uploads: string;
+    googleApplicationCredentials: string;
   };
   logs: {
     http: string;

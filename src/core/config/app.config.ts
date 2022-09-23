@@ -14,6 +14,7 @@ const {
   PATH_UPLOADS,
   PORT,
   FCM_SERVER_KEY,
+  GOOGLE_APPLICATION_CREDENTIALS,
 } = process.env;
 
 const getMongoUri = (): string => {
@@ -45,6 +46,7 @@ export const Config: ConfigI = {
   paths: {
     project: PATH_PROJECT,
     uploads: PATH_UPLOADS,
+    googleApplicationCredentials: GOOGLE_APPLICATION_CREDENTIALS,
   },
   logs: {
     http: LOGS_HTTP,
