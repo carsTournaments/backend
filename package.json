@@ -1,12 +1,10 @@
 {
   "name": "carstournaments-backend",
-  "version": "0.6.9",
+  "version": "0.7.0",
   "engines": {
     "node": "16.14.0"
   },
   "scripts": {
-    "tsc": "sh ./scripts/create-dist.sh && tsc",
-    "tscw": "sh ./scripts/create-dist.sh && tsc -w --resolveJsonModule",
     "start": "NODE_ENV=production nodemon",
     "start:dev": "NODE_ENV=development nodemon",
     "lint": "eslint \"**/*.{ts,tsx}\" --fix",

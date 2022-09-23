@@ -7,9 +7,13 @@ import {
   AnalyticsGetVisitsResponse,
 } from './analytics.response';
 import { format } from 'date-fns/fp';
+import { Config } from '@core/config';
 
 export class AnalyticsService {
-  analyticsDataClient = new BetaAnalyticsDataClient();
+  analyticsDataClient = new BetaAnalyticsDataClient({
+    keyFilename: Config.paths.googleApplicationCredentials,
+  });
+    
   property = 'properties/310473081';
   dimensions = ['city', 'country', 'eventName'];
   metrics = [
@@ -19,6 +23,10 @@ export class AnalyticsService {
     'eventCountPerUser',
     'screenPageViewsPerSession',
   ];
+    
+    constructor() {
+        console.log(this.analyticsDataClient)
+    }
 
   async getReport() {
     const [response] = await this.analyticsDataClient.runReport({
