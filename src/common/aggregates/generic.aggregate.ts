@@ -133,7 +133,9 @@ export const lookupVotesCount = (type: 'car' | 'tournament' | 'user') => {
   };
 };
 
-export const lookupVotes = (type: 'car' | 'tournament' | 'user' | 'pairing') => {
+export const lookupVotes = (
+  type: 'car' | 'tournament' | 'user' | 'pairing'
+) => {
   return {
     $lookup: {
       from: 'votes',
@@ -145,19 +147,18 @@ export const lookupVotes = (type: 'car' | 'tournament' | 'user' | 'pairing') => 
 };
 
 export const lookupCarWinner = () => {
-    return {
-      $lookup: {
-        from: 'cars',
-        localField: 'winner',
-        foreignField: '_id',
-        as: 'winner',
-        pipeline: [
-          lookupBrand(),
-          lookupImages('car'),
-          { $unwind: { path: '$brand', preserveNullAndEmptyArrays: true } },
-          { $project: { model: 1, brand: 1, images: 1, _id: 1 } },
-        ],
-      },
-    }
-    
-}
+  return {
+    $lookup: {
+      from: 'cars',
+      localField: 'winner',
+      foreignField: '_id',
+      as: 'winner',
+      pipeline: [
+        lookupBrand(),
+        lookupImages('car'),
+        { $unwind: { path: '$brand', preserveNullAndEmptyArrays: true } },
+        { $project: { model: 1, brand: 1, images: 1, _id: 1 } },
+      ],
+    },
+  };
+};
