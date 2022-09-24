@@ -2,7 +2,6 @@ import {
   lookupImage,
   lookupDriver,
   lookupImages,
-  lookupVotesCount,
   lookupCarWinner,
   lookupBrand,
 } from '@aggregates';

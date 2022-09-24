@@ -97,6 +97,9 @@
             "@literal": [
                 "src/modules/literal"
             ],
+            "@log": [
+                "src/modules/log"
+            ],
             "@logger": [
                 "src/modules/logger"
             ],

@@ -33,14 +33,14 @@ const format = winston.format.combine(
   winston.format.timestamp({ format: 'DD-MM-YYYY HH:mm' }),
   winston.format.colorize({ level: true, all: false }),
   winston.format.printf(
-    (info) => `${info.timestamp} ${info.level}: ${info.message}`
+    (info) => `${info.timestamp} | ${info.level} | ${info.message}`
   )
 );
 
 const formatFile = winston.format.combine(
   winston.format.timestamp({ format: 'DD-MM-YYYY HH:mm' }),
   winston.format.printf(
-    (info) => `${info.timestamp} ${info.level}: ${info.message}`
+    (info) => `${info.timestamp} | ${info.level} | ${info.message}`
   )
 );
 
