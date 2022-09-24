@@ -2,7 +2,7 @@
 .npm
 builds/server
 node_modules/
-logs/
+/logs/
 .git.bfg-report
 scripts/error.log
 .env

@@ -208,7 +208,7 @@ export class TournamentService {
     try {
       const aggregate: any = tournamentGetPairingsForDate();
       const roundsDB = await Round.aggregate(aggregate).exec();
-        const rounds: RoundI[] = this.getItemsForRounds(roundsDB, date);
+      const rounds: RoundI[] = this.getItemsForRounds(roundsDB, date);
       const tournaments = await this.getItemsForTournaments(date);
       const items = { rounds, tournaments };
       this.cacheService.set(
@@ -224,8 +224,7 @@ export class TournamentService {
 
   private getItemsForRounds(roundsDB: any[], date: string): RoundI[] {
     try {
-        const rounds: RoundI[] = [];
-        console.log( roundsDB[0].pairings );
+      const rounds: RoundI[] = [];
       for (const round of roundsDB) {
         const startDate =
           moment(round.startDate).format('YYYY-MM-DD') + ' 00:00:00';

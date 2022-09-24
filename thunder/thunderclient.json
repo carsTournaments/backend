@@ -2370,5 +2370,24 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "f3940b71-425b-4768-b3b5-990fa651657d",
+    "colId": "8b3e6c81-3daa-44cb-9b22-e9ca7d33f0a8",
+    "containerId": "",
+    "name": "Log: GetAll",
+    "url": "{{url}}/logs/getAll/all/date:asc",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-23T18:59:27.690Z",
+    "modified": "2022-09-23T22:39:24.437Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
   }
 ]
