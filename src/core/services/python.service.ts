@@ -21,7 +21,7 @@ export class PythonService {
           reject({ message: 'Error' });
         }
         if (results && results.length > 0) {
-            if (format === 'JSON') {
+          if (format === 'JSON') {
             resolve(JSON.parse(results[0]));
           } else {
             resolve(results);

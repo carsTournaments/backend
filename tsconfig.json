@@ -91,6 +91,9 @@
             "@inscription": [
                 "src/modules/inscription"
             ],
+            "@github": [
+                "src/modules/github"
+            ],
             "@like": [
                 "src/modules/like"
             ],
@@ -99,9 +102,6 @@
             ],
             "@log": [
                 "src/modules/log"
-            ],
-            "@logger": [
-                "src/modules/logger"
             ],
             "@menu": [
                 "src/modules/menu"

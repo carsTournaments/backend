@@ -21,7 +21,8 @@ import { UserController } from '@user';
 import { VoteController } from '@vote';
 import { WinnerController } from '@winner';
 import { CacheController } from '@cache';
-import { LogController } from './modules/logs/log.controller';
+import { LogController } from '@log';
+import { GithubController } from '@github';
 
 const controllers = [
   new AnalyticsController(),
@@ -32,6 +33,7 @@ const controllers = [
   new DefaultController(),
   new ImageController(),
   new InscriptionController(),
+  new GithubController(),
   new LikeController(),
   new LiteralController(),
   new LogController(),

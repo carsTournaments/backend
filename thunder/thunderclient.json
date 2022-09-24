@@ -2389,5 +2389,43 @@
     ],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "663603ce-5ccb-4cdd-ba93-e8e1ce15ce44",
+    "colId": "c78854b6-9fd7-4e65-bf9c-204d7c980f67",
+    "containerId": "046c8c8a-b81b-4840-b876-84532f0821e2",
+    "name": "Issues: GetAll",
+    "url": "{{url}}/github/issues/all",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-24T14:19:25.337Z",
+    "modified": "2022-09-24T15:13:15.009Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "6f4252c2-2113-4267-bdb7-6e2163db2cd9",
+    "colId": "c78854b6-9fd7-4e65-bf9c-204d7c980f67",
+    "containerId": "fe6e5fd6-e87d-4523-bb5d-a74294ebc141",
+    "name": "Actions: GetAll",
+    "url": "{{url}}/github/actions/all",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-24T22:37:05.307Z",
+    "modified": "2022-09-24T22:37:27.195Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
   }
 ]
