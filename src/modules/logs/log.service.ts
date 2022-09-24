@@ -1,10 +1,11 @@
 import { PythonService } from '@services';
+import { LogGetAllDto } from './log.dto';
 import { LogI } from './log.interface';
 
 export class LogService {
   private pythonService = new PythonService();
 
-  async getAll(body: { type: string; order: string }): Promise<LogI[]> {
+  async getAll(body: LogGetAllDto): Promise<LogI[]> {
     return new Promise(async (resolve, reject) => {
       try {
         const filePath = 'logs-to-json.py';
