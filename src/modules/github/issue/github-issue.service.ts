@@ -1,39 +1,30 @@
-import {
-  GithubIssueOriginalI,
-  GithubIssueI,
-  GithubIssueM,
-  GithubIssuesI,
-} from '@github';
-import axios from 'axios';
+import { Config } from '@core/config';
+import { GithubIssueOriginalI, GithubIssueI, GithubIssueM } from '@github';
+import axios, { AxiosRequestHeaders } from 'axios';
 
 export class GithubIssueService {
   private user = 'carsTournaments';
   private respositories = ['backend', 'admin', 'app'];
-  private headers = {
-    'User-Agent': 'CT', // Your Github ID or application name
+  private headers: AxiosRequestHeaders = {
+    Authorization: `Bearer ${Config.githubToken}`,
   };
 
-  getAll(): Promise<GithubIssuesI[]> {
+  getAll(): Promise<GithubIssueI[]> {
     return new Promise(async (resolve, reject) => {
       try {
-        const items: GithubIssuesI | any = {
-          admin: [],
-          app: [],
-          backend: [],
-        };
+        const items: GithubIssueI[] = [];
         for (const repo of this.respositories) {
           const url = this.getUrl('issues', repo);
-          const response = await axios.get(url);
+          const response = await axios.get(url, { headers: this.headers });
           const data: GithubIssueOriginalI[] = response.data;
-          const issues: GithubIssueI[] = [];
           for (const oIssue of data) {
-            const issue: GithubIssueI = new GithubIssueM(oIssue);
-            issues.push(issue);
+            const issue: GithubIssueI = new GithubIssueM(oIssue, repo);
+            items.push(issue);
           }
-          items[repo] = issues;
         }
         resolve(items);
       } catch (error) {
+        console.log(error);
         reject(error);
       }
     });

@@ -10,6 +10,7 @@ export interface ConfigI {
   fcm: {
     server_key: string;
   };
+  githubToken: string;
   paths: {
     project: string;
     uploads: string;

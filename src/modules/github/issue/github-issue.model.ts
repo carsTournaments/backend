@@ -8,17 +8,21 @@ export class GithubIssueM implements GithubIssueI {
   state: string;
   assignee: string;
   comments: number;
-  body: string;
   url: string;
+  repo: string;
+  created: string;
+  updated: string;
 
-  constructor(data: GithubIssueOriginalI) {
+  constructor(data: GithubIssueOriginalI, repo: string) {
     this.title = data.title ?? '';
     this.user = data.user.login ?? '';
     data.labels.forEach((item) => this.labels.push(item.name));
     this.state = data.state ?? '';
     this.assignee = data.assignee.login;
     this.comments = data.comments ?? 0;
-    this.body = data.body ?? '';
-    this.url = data.url ?? '';
+    this.url = data.html_url ?? '';
+    this.repo = repo;
+    this.created = data.created_at ?? '';
+    this.updated = data.updated_at ?? '';
   }
 }

@@ -5,7 +5,6 @@ export {
   GithubActionI,
   GithubActionOriginalI,
   GithubActionOriginalWorkflowI,
-  GithubActionsI,
 } from './action/github-action.interface';
 export { GithubActionService } from './action/github-action.service';
 export { GithubActionController } from './action/github-action.controller';
@@ -13,7 +12,6 @@ export { GithubActionController } from './action/github-action.controller';
 export { GithubIssueM } from './issue/github-issue.model';
 export {
   GithubIssueI,
-  GithubIssuesI,
   GithubIssueOriginalI,
 } from './issue/github-issue.interface';
 export { GithubIssueController } from './issue/github-issue.controller';

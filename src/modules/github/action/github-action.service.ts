@@ -1,37 +1,27 @@
-import {
-  GithubActionI,
-  GithubActionM,
-  GithubActionOriginalI,
-  GithubActionsI,
-} from '@github';
-import axios from 'axios';
+import { Config } from '@core/config';
+import { GithubActionI, GithubActionM, GithubActionOriginalI } from '@github';
+import axios, { AxiosRequestHeaders } from 'axios';
 
 export class GithubActionService {
   private user = 'carsTournaments';
   private respositories = ['backend', 'admin', 'app'];
-  private headers = {
-    'User-Agent': 'CT', // Your Github ID or application name
+  private headers: AxiosRequestHeaders = {
+    Authorization: `Bearer ${Config.githubToken}`,
   };
 
-  getAll(): Promise<GithubActionsI[]> {
+  getAll(): Promise<GithubActionI[]> {
     return new Promise(async (resolve, reject) => {
       try {
-        const items: GithubActionsI | any = {
-          admin: [],
-          app: [],
-          backend: [],
-        };
+        const items: GithubActionI[] = [];
         for (const repo of this.respositories) {
           const url = this.getUrl('actions', repo);
-          const response = await axios.get(url);
+          const response = await axios.get(url, { headers: this.headers });
           const data: GithubActionOriginalI = response.data;
           const workflows = data.workflows;
-          const actions: GithubActionI[] = [];
           for (const oIssue of workflows) {
-            const issue: GithubActionI = new GithubActionM(oIssue);
-            actions.push(issue);
+            const issue: GithubActionI = new GithubActionM(oIssue, repo);
+            items.push(issue);
           }
-          items[repo] = actions;
         }
         resolve(items);
       } catch (error) {
