@@ -40,10 +40,7 @@ export class TournamentController implements ControllerI {
       [verifyCache('tournament.getDaysForCalendar')],
       this.getDaysForCalendar
     );
-    this.router.post(
-      `${this.path}/getCalendarItems`,
-      this.getCalendarItems
-    );
+    this.router.post(`${this.path}/getCalendarItems`, this.getCalendarItems);
     this.router.post(`${this.path}/getOne`, this.getOne);
     this.router.post(
       `${this.path}/create`,

@@ -1,6 +1,5 @@
 import { PythonService } from '@services';
-import { LogGetAllDto } from './log.dto';
-import { LogI } from './log.interface';
+import { LogI, LogGetAllDto } from '@log';
 
 export class LogService {
   private pythonService = new PythonService();

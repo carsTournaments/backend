@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import { ControllerI } from '@interfaces';
 import { HttpException } from '@core/exceptions';
-import { LogService } from './log.service';
-import { LogGetAllDto } from './log.dto';
+import { LogService, LogGetAllDto } from '@log';
 
 export class LogController implements ControllerI {
   path = '/logs';
