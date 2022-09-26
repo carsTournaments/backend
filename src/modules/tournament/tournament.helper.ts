@@ -556,7 +556,13 @@ export class TournamentHelper {
           );
           const items: { car: CarI; votes: number }[] = [];
           if (semifinalRound) {
-            await this.isSemifinalRound(semifinalRound, items, gold, silver, resolve);
+            await this.isSemifinalRound(
+              semifinalRound,
+              items,
+              gold,
+              silver,
+              resolve
+            );
           } else {
             reject({
               message: 'No se encontro el round de semifinal',
