@@ -1,9 +1,14 @@
 import { Config } from '@core/config';
-import { GithubActionI, GithubActionM, GithubActionOriginalI } from '@github';
+import {
+  GithubActionI,
+  GithubActionM,
+  GithubActionOriginalI,
+  GithubUtilsService,
+} from '@github';
 import axios, { AxiosRequestHeaders } from 'axios';
 
 export class GithubActionService {
-  private user = 'carsTournaments';
+  private githubUtilsService = new GithubUtilsService();
   private respositories = ['backend', 'admin', 'app'];
   private headers: AxiosRequestHeaders = {
     Authorization: `Bearer ${Config.githubToken}`,
@@ -14,12 +19,14 @@ export class GithubActionService {
       try {
         const items: GithubActionI[] = [];
         for (const repo of this.respositories) {
-          const url = this.getUrl('actions', repo);
-          const response = await axios.get(url, { headers: this.headers });
+          const urlApi = this.githubUtilsService.getUrl('actions', repo);
+          const url = this.githubUtilsService.getUrl('actions', repo, false);
+          const response = await axios.get(urlApi, { headers: this.headers });
           const data: GithubActionOriginalI = response.data;
           const workflows = data.workflows;
-          for (const oIssue of workflows) {
-            const issue: GithubActionI = new GithubActionM(oIssue, repo);
+          for (const action of workflows) {
+            console.log(action);
+            const issue: GithubActionI = new GithubActionM(action, repo, url);
             items.push(issue);
           }
         }
@@ -28,14 +35,5 @@ export class GithubActionService {
         reject(error);
       }
     });
-  }
-
-  private getUrl(type: string, repository: string) {
-    const urls: any = {
-      base: `https://api.github.com/repos/${this.user}/:repository`,
-      issues: 'issues',
-      actions: 'actions/workflows',
-    };
-    return `${urls.base.replace(':repository', repository)}/${urls[type]}`;
   }
 }
