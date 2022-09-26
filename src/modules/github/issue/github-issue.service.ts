@@ -30,7 +30,6 @@ export class GithubIssueService {
         }
         resolve(items);
       } catch (error) {
-        console.log(error);
         reject(error);
       }
     });
@@ -43,7 +42,6 @@ export class GithubIssueService {
         await axios.post(url, body, { headers: this.headers });
         resolve({ message: 'Issue creada correctamente' });
       } catch (error) {
-        console.log({ error });
         reject(error);
       }
     });

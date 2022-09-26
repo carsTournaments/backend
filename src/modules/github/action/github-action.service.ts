@@ -25,7 +25,6 @@ export class GithubActionService {
           const data: GithubActionOriginalI = response.data;
           const workflows = data.workflows;
           for (const action of workflows) {
-            console.log(action);
             const issue: GithubActionI = new GithubActionM(action, repo, url);
             items.push(issue);
           }
