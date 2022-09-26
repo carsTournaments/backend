@@ -1,5 +1,10 @@
 import { Config } from '@core/config';
-import { GithubActionI, GithubActionM, GithubActionOriginalI, GithubUtilsService } from '@github';
+import {
+  GithubActionI,
+  GithubActionM,
+  GithubActionOriginalI,
+  GithubUtilsService,
+} from '@github';
 import axios, { AxiosRequestHeaders } from 'axios';
 
 export class GithubActionService {
