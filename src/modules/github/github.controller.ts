@@ -1,6 +1,7 @@
 import { ControllerI } from '@interfaces';
 import { Router } from 'express';
-import { GithubIssueController, GithubActionController } from '@github';
+import { GithubIssueController, GithubActionController, GithubIssueCreateDto } from '@github';
+import { validationMiddleware } from '@middlewares';
 
 export class GithubController implements ControllerI {
   path = '/github';
@@ -12,14 +13,23 @@ export class GithubController implements ControllerI {
   }
 
   private initializeRoutes() {
+    // Actions
+
+    this.router.get(
+      `${this.path}/actions/all`,
+      this.githubActionController.getAll
+    );
+
+    // Issues
     this.router.get(
       `${this.path}/issues/all/:tag?`,
       this.githubIssueController.getAll
     );
 
-    this.router.get(
-      `${this.path}/actions/all`,
-      this.githubActionController.getAll
+    this.router.post(
+      `${this.path}/issues`,
+      validationMiddleware(GithubIssueCreateDto),
+      this.githubIssueController.create
     );
   }
 }

@@ -18,7 +18,7 @@ export class GithubIssueM implements GithubIssueI {
     this.user = data.user.login ?? '';
     data.labels.forEach((item) => this.labels.push(item.name));
     this.state = data.state ?? '';
-    this.assignee = data.assignee.login;
+    this.assignee = data.assignee?.login ?? '';
     this.comments = data.comments ?? 0;
     this.url = data.html_url ?? '';
     this.repo = repo;

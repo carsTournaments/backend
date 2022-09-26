@@ -1,3 +1,4 @@
+
 export { GithubController } from './github.controller';
 // Actions
 export { GithubActionM } from './action/github-action.model';
@@ -14,5 +15,6 @@ export {
   GithubIssueI,
   GithubIssueOriginalI,
 } from './issue/github-issue.interface';
+export { GithubIssueCreateDto } from './issue/github-issue.dto';
 export { GithubIssueController } from './issue/github-issue.controller';
 export { GithubIssueService } from './issue/github-issue.service';

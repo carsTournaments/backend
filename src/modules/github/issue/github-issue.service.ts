@@ -1,5 +1,10 @@
 import { Config } from '@core/config';
-import { GithubIssueOriginalI, GithubIssueI, GithubIssueM } from '@github';
+import {
+  GithubIssueOriginalI,
+  GithubIssueI,
+  GithubIssueM,
+  GithubIssueCreateDto,
+} from '@github';
 import axios, { AxiosRequestHeaders } from 'axios';
 
 export class GithubIssueService {
@@ -25,6 +30,19 @@ export class GithubIssueService {
         resolve(items);
       } catch (error) {
         console.log(error);
+        reject(error);
+      }
+    });
+  }
+
+  create(body: GithubIssueCreateDto) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const url = this.getUrl('issues', body.repo);
+        await axios.post(url, body, { headers: this.headers });
+        resolve({ message: 'Issue creada correctamente' });
+      } catch (error) {
+        console.log({error});
         reject(error);
       }
     });
