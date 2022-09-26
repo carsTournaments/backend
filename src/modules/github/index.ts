@@ -1,4 +1,4 @@
-
+export { GithubUtilsService } from './github-utils.service';
 export { GithubController } from './github.controller';
 // Actions
 export { GithubActionM } from './action/github-action.model';

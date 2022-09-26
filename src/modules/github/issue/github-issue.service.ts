@@ -4,11 +4,12 @@ import {
   GithubIssueI,
   GithubIssueM,
   GithubIssueCreateDto,
+  GithubUtilsService,
 } from '@github';
 import axios, { AxiosRequestHeaders } from 'axios';
 
 export class GithubIssueService {
-  private user = 'carsTournaments';
+  private githubUtilsService = new GithubUtilsService();
   private respositories = ['backend', 'admin', 'app'];
   private headers: AxiosRequestHeaders = {
     Authorization: `Bearer ${Config.githubToken}`,
@@ -19,7 +20,7 @@ export class GithubIssueService {
       try {
         const items: GithubIssueI[] = [];
         for (const repo of this.respositories) {
-          const url = this.getUrl('issues', repo);
+          const url = this.githubUtilsService.getUrl('issues', repo);
           const response = await axios.get(url, { headers: this.headers });
           const data: GithubIssueOriginalI[] = response.data;
           for (const oIssue of data) {
@@ -38,21 +39,13 @@ export class GithubIssueService {
   create(body: GithubIssueCreateDto) {
     return new Promise(async (resolve, reject) => {
       try {
-        const url = this.getUrl('issues', body.repo);
+        const url = this.githubUtilsService.getUrl('issues', body.repo);
         await axios.post(url, body, { headers: this.headers });
         resolve({ message: 'Issue creada correctamente' });
       } catch (error) {
-        console.log({error});
+        console.log({ error });
         reject(error);
       }
     });
-  }
-
-  private getUrl(type: string, repository: string) {
-    const urls: any = {
-      base: `https://api.github.com/repos/${this.user}/:repository`,
-      issues: `issues`,
-    };
-    return `${urls.base.replace(':repository', repository)}/${urls[type]}`;
   }
 }
