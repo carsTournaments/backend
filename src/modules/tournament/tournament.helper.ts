@@ -556,7 +556,7 @@ export class TournamentHelper {
           );
           const items: { car: CarI; votes: number }[] = [];
           if (semifinalRound) {
-            await isSemifinalRound(semifinalRound, items, resolve);
+            await this.isSemifinalRound(semifinalRound, items, gold, silver, resolve);
           } else {
             reject({
               message: 'No se encontro el round de semifinal',
@@ -569,39 +569,41 @@ export class TournamentHelper {
         reject(error);
       }
     });
+  }
 
-    async function isSemifinalRound(
-      semifinalRound: RoundI,
-      items: { car: CarI; votes: number }[],
-      resolve: (value: CarI | PromiseLike<CarI>) => void
-    ) {
-      for (const pairing of semifinalRound.pairings) {
-        const item: PairingI = await Pairing.findOne({
-          round: pairing.round._id.toString(),
-          winner: { $ne: null },
-        })
-          .populate(this.populatePauringsDefault)
-          .exec();
-        const car1 = item.car1;
-        const car2 = item.car2;
-        if (
-          car1?._id.toString() !== gold?._id.toString() &&
-          car1?._id.toString() !== silver?._id.toString()
-        ) {
-          items.push({
-            car: car1,
-            votes: item.votes.length,
-          });
-        } else {
-          items.push({
-            car: car2,
-            votes: item.votes.length,
-          });
-        }
+  async isSemifinalRound(
+    semifinalRound: RoundI,
+    items: { car: CarI; votes: number }[],
+    gold: CarI,
+    silver: CarI,
+    resolve: (value: CarI | PromiseLike<CarI>) => void
+  ) {
+    for (const pairing of semifinalRound.pairings) {
+      const item: PairingI = await Pairing.findOne({
+        round: pairing.round._id.toString(),
+        winner: { $ne: null },
+      })
+        .populate(this.populatePauringsDefault)
+        .exec();
+      const car1 = item.car1;
+      const car2 = item.car2;
+      if (
+        car1?._id.toString() !== gold?._id.toString() &&
+        car1?._id.toString() !== silver?._id.toString()
+      ) {
+        items.push({
+          car: car1,
+          votes: item.votes.length,
+        });
+      } else {
+        items.push({
+          car: car2,
+          votes: item.votes.length,
+        });
       }
-      const bronze = items.reduce((a, b) => (a.votes > b.votes ? a : b));
-      resolve(bronze.car);
     }
+    const bronze = items.reduce((a, b) => (a.votes > b.votes ? a : b));
+    resolve(bronze.car);
   }
 
   private async getSemifinalRounds(tournamentId: string): Promise<RoundI> {
