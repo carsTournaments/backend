@@ -274,6 +274,12 @@ export class CarHelper {
   ): CarStatsItemI {
     let newItem: CarStatsItemI;
     switch (type) {
+      case 'fuel':
+        newItem = this.setFuelForCarStats(car, item);
+        break;
+      case 'traction':
+        newItem = this.setTractionForCarStats(car, item);
+        break;
       case 'stock':
         newItem = this.setStockForCarStats(car, item);
         break;
@@ -299,6 +305,19 @@ export class CarHelper {
         break;
     }
     return newItem;
+  }
+
+  private setFuelForCarStats(car: CarI, item: CarStatsItemI) {
+    if (item.name === car.fuel) {
+      item.value++;
+    }
+    return item;
+  }
+  private setTractionForCarStats(car: CarI, item: CarStatsItemI) {
+    if (item.name === car.traction) {
+      item.value++;
+    }
+    return item;
   }
 
   private setStockForCarStats(car: CarI, item: CarStatsItemI) {

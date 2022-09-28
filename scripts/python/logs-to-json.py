@@ -23,11 +23,16 @@ for line in log_file:
     if len(line) == 3:
         date = line[0]
         level = line[1]
-        message = line[2].strip()
+        msg = line[2].strip()
+        typeLog = ""
+        if msg.find("]") != -1:
+            typeLog  = msg.split(']')[0].split("[")[1]
+            msg = msg.split(']')[1].strip()
         logs.append({
             "date": date,
             "level": level,
-            "message": message,
+            "type": typeLog,
+            "message": msg,
         })
 
 

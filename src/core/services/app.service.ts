@@ -33,7 +33,6 @@ export class AppService {
         collectDefaultMetrics: {},
       },
       formatStatusCode: (res: any) => {
-        // combine 200 and 4xx status codes
         if (res.statusCode >= 200 && res.statusCode < 300) {
           return '2xx';
         } else if (res.statusCode >= 400 && res.statusCode < 500) {
@@ -94,6 +93,6 @@ export class AppService {
 
   createCache() {
     this.cacheService.create();
-    Logger.info('Cache iniciada');
+    Logger.info('[Redis] Cache iniciada');
   }
 }

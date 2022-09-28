@@ -19,7 +19,7 @@ export const connectToDB = async (): Promise<void> => {
   try {
     const uri = await getUri();
     mongoose.connect(uri, Config.mongo.options, () => {
-      Logger.info('Conectado a MongoDB');
+      Logger.info('[DB] MongoDB iniciado');
     });
   } catch (error) {
     Logger.error('No se pudo conectar a MongoDB, revisa .env');

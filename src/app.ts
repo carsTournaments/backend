@@ -18,15 +18,10 @@ const init = () => {
   initializeControllers(app);
   appService.initializeErrorHandling();
   if (env !== 'test') {
-    appService.createCache();
     appService.initializeCrontab();
     app.listen(Config.port, () => {
-      Logger.warn(`CarsTournaments - ${Config.env}`);
-      Logger.warn(
-        Config.env === 'development'
-          ? `${'http://localhost:' + Config.port}`
-          : 'https://api.carstournaments.com'
-      );
+      Logger.info(`[Server] CarsTournaments ${Config.env}`);
+      appService.createCache();
     });
   }
 };
