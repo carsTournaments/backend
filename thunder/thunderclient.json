@@ -2451,5 +2451,24 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "677948be-9439-45a8-83e0-2e7911d31ce6",
+    "colId": "e76a85e9-48f1-4ee3-93c1-ae0438c515a0",
+    "containerId": "89a0f449-de6c-477e-8ab0-e37b539256cc",
+    "name": "Log: Delete all",
+    "url": "{{url}}/logs/all",
+    "method": "DELETE",
+    "sortNum": 20000,
+    "created": "2022-09-28T09:27:25.246Z",
+    "modified": "2022-09-28T09:27:33.548Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "tests": []
   }
 ]

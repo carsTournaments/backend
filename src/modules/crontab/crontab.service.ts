@@ -48,7 +48,7 @@ export class CrontabService {
         for (const tournament of tournaments) {
           const actionCronForTournament = async () => {
             try {
-              Logger.info('[CRON] Inicio de torneo' + tournament.name);
+              Logger.info('[Cron] Inicio de torneo' + tournament.name);
               const tournamentItem = await Tournament.findById(
                 tournament._id
               ).exec();
@@ -58,7 +58,7 @@ export class CrontabService {
               );
               if (result == null) {
                 Logger.warn(
-                  `[CRON] El torneo ${tournamentItem.name} se ha aplazado 1 día`
+                  `[Cron] El torneo ${tournamentItem.name} se ha aplazado 1 día`
                 );
               } else {
                 await this.createCronForRound(tournamentItem);
@@ -73,7 +73,7 @@ export class CrontabService {
             cronExpression = new Date(tournament.startDate);
           } else {
             Logger.warn(
-              '[CRON] Torneo con fecha anterior a la actual, iniciamos en 1 minuto'
+              '[Cron] Torneo con fecha anterior a la actual, iniciamos en 1 minuto'
             );
             cronExpression = new Date(
               moment().add(1, 'minutes').format('YYYY-MM-DD HH:mm')
@@ -129,7 +129,7 @@ export class CrontabService {
         const cronExpression = new Date(round.endDate);
         const action = async () => {
           Logger.info(
-            '[CRON] Inicio de ronda' + tournament.name + ' - ' + round.name
+            '[Cron] Inicio de ronda' + tournament.name + ' - ' + round.name
           );
           const roundItem = await Round.findById(round._id).exec();
           roundItem.status = 'InProgress';
@@ -188,14 +188,14 @@ export class CrontabService {
   private generateLogsForInit(): void {
     const tournamentsCron = this.items.filter((i) => i.type === 'tournament');
     Logger.info(
-      `[CRON] ${tournamentsCron.length} torneos - Proximo: ${
+      `[Cron] ${tournamentsCron.length} torneos - Proximo: ${
         tournamentsCron.length > 0
           ? moment(tournamentsCron[0].date).format('DD-MM-YYYY HH:mm')
           : 'No hay torneos'
       }`
     );
     Logger.info(
-      `[CRON] ${
+      `[Cron] ${
         this.items.filter((i) => i.type === 'round').length
       } rondas - Proximo: ${
         this.items.filter((i) => i.type === 'round').length > 0

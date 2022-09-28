@@ -13,6 +13,7 @@ export class LogController implements ControllerI {
 
   private initializeRoutes() {
     this.router.get(`${this.path}/getAll/:type/?:order`, this.getAll);
+    this.router.delete(`${this.path}/all`, this.deleteAll);
   }
 
   private getAll = async (
@@ -26,6 +27,19 @@ export class LogController implements ControllerI {
         order: request.params.order,
       };
       const items = await this.logService.getAll(body);
+      response.status(200).send(items);
+    } catch (error) {
+      next(new HttpException(400, error.message, request, response));
+    }
+  };
+
+  private deleteAll = async (
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const items = await this.logService.deleteAll();
       response.status(200).send(items);
     } catch (error) {
       next(new HttpException(400, error.message, request, response));
