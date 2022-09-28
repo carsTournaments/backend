@@ -3,6 +3,7 @@ import { GetAllDto, IdSiteDto } from '@dtos';
 import { MessageI, PaginatorI } from '@interfaces';
 import { UtilsService } from '@services';
 import { Tournament, TournamentI, TournamentRequisiteI } from '@tournament';
+import { Logger } from '../../core/services/logger.service';
 import {
   Inscription,
   inscriptionGetAllAggregate,
@@ -159,7 +160,7 @@ export class InscriptionService {
   async getMyCarsForInscription(
     data: InscriptionGetMyCarsForInscriptionDto
   ): Promise<InscriptionGetMyCarsUserForInscriptionResponse> {
-    try {
+    return new Promise(async (resolve, reject) => {
       const results: InscriptionGetMyCarsUserForInscriptionResponse = {
         inscribed: [],
         availables: [],
@@ -173,35 +174,38 @@ export class InscriptionService {
           populate: { path: 'image', select: 'url' },
         },
       ];
-      const cars = await Car.find({ driver: data.userId })
-        .populate(populateCar)
-        .exec();
-      const tournament = await Tournament.findById(data.tournamentId).exec();
-      if (tournament) {
-        for (const car of cars) {
-          // check requisites of tournament
-          const check = this.checkValidationsRequisites(tournament, car);
-          if (check.status) {
-            const inscription = await Inscription.findOne({
-              car: car._id.toString(),
-              tournament: data.tournamentId.toString(),
-            }).exec();
-            if (inscription) {
-              results.inscribed.push(car);
+      try {
+        const cars = await Car.find({ driver: data.userId })
+          .populate(populateCar)
+          .exec();
+        const tournament = await Tournament.findById(data.tournamentId).exec();
+        if (tournament) {
+          for (const car of cars) {
+            // check requisites of tournament
+            const check = this.checkValidationsRequisites(tournament, car);
+            if (check.status) {
+              const inscription = await Inscription.findOne({
+                car: car._id.toString(),
+                tournament: data.tournamentId.toString(),
+              }).exec();
+              if (inscription) {
+                results.inscribed.push(car);
+              } else {
+                results.availables.push(car);
+              }
             } else {
-              results.availables.push(car);
+              results.unavailable.push(car);
             }
-          } else {
-            results.unavailable.push(car);
           }
+          resolve(results);
+        } else {
+          reject({ message: 'El torneo no existe' });
         }
-        return results;
-      } else {
-        return results;
+      } catch (error) {
+        Logger.error(error);
+        reject(error);
       }
-    } catch (error) {
-      return error;
-    }
+    });
   }
 
   getOne(id: string): Promise<InscriptionI> {
@@ -363,9 +367,13 @@ export class InscriptionService {
     if (requisite.field === 'continent') {
       if (car.brand.continent !== requisite.value) {
         return this.checkValidationsRequisitesFailed(result, requisite);
+      } else {
+        return result;
       }
     } else if (car[requisite.field] !== requisite.value) {
       return this.checkValidationsRequisitesFailed(result, requisite);
+    } else {
+      return result;
     }
   }
 
