@@ -15,6 +15,6 @@
 
 [![Twitter](https://img.shields.io/twitter/follow/CarsTournaments)](https://twitter.com/CarsTournaments)
 
-[![HitCount](https://hits.dwyl.com/carsTournaments/backend.svg?style=flat-square)](http://hits.dwyl.com/carsTournaments/backend)
+[![HitCount](https://hits.dwyl.com/carsTournaments/backend.svg?style=flat)](http://hits.dwyl.com/carsTournaments/backend)
 
 </div>
