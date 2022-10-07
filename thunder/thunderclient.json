@@ -2470,5 +2470,29 @@
     ],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "ccee884b-f31e-4bc8-8742-6d6e2a7c9825",
+    "colId": "e76a85e9-48f1-4ee3-93c1-ae0438c515a0",
+    "containerId": "732888e2-7326-4c8b-b7f5-18505c0c5b68",
+    "name": "Analytics: getDataForVMap",
+    "url": "{{url}}/analytics/getDataForVMap",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2022-10-07T10:42:04.867Z",
+    "modified": "2022-10-07T13:25:00.132Z",
+    "headers": [
+      {
+        "name": "XSToken",
+        "value": "{{tokenAdmin}}"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"startDate\": \"90daysAgo\",\n    \"endDate\": \"today\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
