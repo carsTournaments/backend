@@ -8,6 +8,7 @@ import {
 } from './analytics.response';
 import { format } from 'date-fns/fp';
 import { Config } from '@core/config';
+import { countriesCodes } from './countries.enum';
 
 export class AnalyticsService {
   analyticsDataClient = new BetaAnalyticsDataClient({
@@ -38,6 +39,28 @@ export class AnalyticsService {
     });
 
     return response;
+  }
+
+  async getDataForVMap(data: AnalyticsGetGenericDto): Promise<any[]> {
+    try {
+      const countries: any[] = [];
+      const [response] = await this.analyticsDataClient.runReport({
+        property: this.property,
+        dateRanges: [{ startDate: data.startDate, endDate: data.endDate }],
+        dimensions: [{ name: 'country' }],
+        metrics: [{ name: 'activeUsers' }],
+      });
+      response.rows.forEach((row) => {
+        const countryRowName: string = row.dimensionValues[0].value.trim();
+        if (countryRowName !== '(not set)') {
+          const countryName = countryRowName.replace(/\s/g, '');
+          const country = countriesCodes[countryName].toLowerCase();
+          countries.push([country, Number(row.metricValues[0].value)]);
+        }
+      });
+
+      return countries;
+    } catch (error) {}
   }
 
   async getVisits(
