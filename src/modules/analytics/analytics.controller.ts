@@ -19,6 +19,11 @@ export class AnalyticsController implements ControllerI {
       this.getVisits
     );
     this.router.post(
+      `${this.path}/getDataForVMap`,
+      [validationMiddleware(AnalyticsGetGenericDto), checkAdminToken],
+      this.getDataForVMap
+    );
+    this.router.post(
       `${this.path}/getVisitsRealTime`,
       checkAdminToken,
       this.getVisitsRealTime
@@ -38,6 +43,20 @@ export class AnalyticsController implements ControllerI {
     try {
       const body: AnalyticsGetGenericDto = request.body;
       const result = await this.analyticsService.getVisits(body);
+      response.status(200).send(result);
+    } catch (error) {
+      next(new HttpException(400, error.message, request, response));
+    }
+  };
+
+  private getDataForVMap = async (
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const body: AnalyticsGetGenericDto = request.body;
+      const result = await this.analyticsService.getDataForVMap(body);
       response.status(200).send(result);
     } catch (error) {
       next(new HttpException(400, error.message, request, response));
