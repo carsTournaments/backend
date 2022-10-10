@@ -23,6 +23,11 @@ import { Tournament } from './tournament.model';
 import { CacheService } from '@cache';
 
 export class TournamentService {
+  populateDefault = [
+    { path: 'rounds', select: 'name status' },
+    { path: 'image', select: 'url' },
+    { path: 'inscriptions', select: 'car' },
+  ];
   private roundService = new RoundService();
   private utilsService = new UtilsService();
   private tournamnetHelper = new TournamentHelper();
@@ -58,16 +63,10 @@ export class TournamentService {
   }> {
     return new Promise(async (resolve, reject) => {
       try {
-        const populate = [
-          { path: 'rounds', select: 'name status' },
-          { path: 'image', select: 'url' },
-          { path: 'inscriptions', select: 'car' },
-        ];
-
         const select = 'name description startDate maxParticipants status';
         const tournamentsDB: TournamentI[] = await Tournament.find({})
           .select(select)
-          .populate(populate)
+          .populate(this.populateDefault)
           .exec();
         let todo: TournamentI[] = tournamentsDB.filter(
           (item) => item.status === 'Todo'
@@ -128,6 +127,28 @@ export class TournamentService {
       Logger.error(error);
       return error;
     }
+  }
+
+  getAllByState(body: { state: string }) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const select = 'name description startDate maxParticipants status';
+        const tournamentsDB: TournamentI[] = await Tournament.find({})
+          .select(select)
+          .populate(this.populateDefault)
+          .exec();
+
+        let items: TournamentI[] = tournamentsDB.filter(
+          (item) =>
+            item.status ===
+            this.utilsService.fixTournamentStateForDB(body.state)
+        );
+        items = this.prepareItemsForGetAllOfStates(items);
+        resolve(items);
+      } catch (error) {
+        reject(error);
+      }
+    });
   }
 
   getDaysForCalendar(): Promise<string[]> {

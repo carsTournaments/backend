@@ -150,9 +150,9 @@ export class LikeService {
             this.cacheService.deleteByCategory('like');
             resolve(Like.create(body));
           }
-          reject({ message: 'El like ya existe' });
+          reject({ message: '[LikeService] El like ya existe' });
         } else {
-          reject({ message: 'Faltan datos' });
+          reject({ message: '[LikeService] Faltan datos' });
         }
       } catch (error) {
         reject(error);

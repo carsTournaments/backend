@@ -1,6 +1,5 @@
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import { google } from '@google-analytics/data/build/protos/protos';
-import { Logger } from '@services';
 import { AnalyticsGetGenericDto } from './analytics.dto';
 import {
   AnalyticsGetEventsWithCategoriesResponse,
@@ -25,42 +24,30 @@ export class AnalyticsService {
     'screenPageViewsPerSession',
   ];
 
-  async getReport() {
-    const [response] = await this.analyticsDataClient.runReport({
-      property: this.property,
-      dateRanges: [{ startDate: '7daysAgo', endDate: 'today' }],
-      dimensions: [{ name: 'eventName' }],
-      metrics: [{ name: 'eventCount' }],
+  getDataForVMap(data: AnalyticsGetGenericDto): Promise<any[]> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const countries: any[] = [];
+        const [response] = await this.analyticsDataClient.runReport({
+          property: this.property,
+          dateRanges: [{ startDate: data.startDate, endDate: data.endDate }],
+          dimensions: [{ name: 'country' }],
+          metrics: [{ name: 'activeUsers' }],
+        });
+        response.rows.forEach((row) => {
+          const countryRowName: string = row.dimensionValues[0].value.trim();
+          if (countryRowName !== '(not set)') {
+            const countryName = countryRowName.replace(/\s/g, '');
+            const country = countriesCodes[countryName].toLowerCase();
+            countries.push([country, Number(row.metricValues[0].value)]);
+          }
+        });
+
+        resolve(countries);
+      } catch (error) {
+        reject(error);
+      }
     });
-    response.rows.forEach((row) => {
-      Logger.info(
-        row.dimensionValues[0].value + ': ' + row.metricValues[0].value
-      );
-    });
-
-    return response;
-  }
-
-  async getDataForVMap(data: AnalyticsGetGenericDto): Promise<any[]> {
-    try {
-      const countries: any[] = [];
-      const [response] = await this.analyticsDataClient.runReport({
-        property: this.property,
-        dateRanges: [{ startDate: data.startDate, endDate: data.endDate }],
-        dimensions: [{ name: 'country' }],
-        metrics: [{ name: 'activeUsers' }],
-      });
-      response.rows.forEach((row) => {
-        const countryRowName: string = row.dimensionValues[0].value.trim();
-        if (countryRowName !== '(not set)') {
-          const countryName = countryRowName.replace(/\s/g, '');
-          const country = countriesCodes[countryName].toLowerCase();
-          countries.push([country, Number(row.metricValues[0].value)]);
-        }
-      });
-
-      return countries;
-    } catch (error) {}
   }
 
   async getVisits(
