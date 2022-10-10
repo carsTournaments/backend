@@ -162,4 +162,14 @@ export class UtilsService {
   firstLetterLowerCase(value: string): string {
     return value.charAt(0).toLowerCase() + value.slice(1);
   }
+
+  fixTournamentStateForDB(state: string) {
+    if (state === 'todo') {
+      return 'Todo';
+    } else if (state === 'inProgress') {
+      return 'InProgress';
+    } else if (state === 'completed') {
+      return 'Completed';
+    }
+  }
 }

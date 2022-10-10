@@ -29,7 +29,7 @@ export class TournamentHelper {
     },
     { path: 'votes', select: 'name' },
   ];
-  private populatePauringsDefault = [
+  private populatePairingsDefault = [
     {
       path: 'round',
       select: 'name tournament',
@@ -589,7 +589,7 @@ export class TournamentHelper {
         round: pairing.round._id.toString(),
         winner: { $ne: null },
       })
-        .populate(this.populatePauringsDefault)
+        .populate(this.populatePairingsDefault)
         .exec();
       const car1 = item.car1;
       const car2 = item.car2;

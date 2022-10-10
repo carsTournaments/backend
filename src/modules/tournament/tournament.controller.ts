@@ -36,6 +36,11 @@ export class TournamentController implements ControllerI {
       this.getAllOfAllStates
     );
     this.router.post(
+      `${this.path}/getAllByState`,
+      [verifyCache('tournament.getAllByState')],
+      this.getAllByState
+    );
+    this.router.post(
       `${this.path}/getDaysForCalendar`,
       [verifyCache('tournament.getDaysForCalendar')],
       this.getDaysForCalendar
@@ -107,6 +112,21 @@ export class TournamentController implements ControllerI {
   ) => {
     try {
       const result = await this.tournamentService.getAllOfAllStates();
+      response.status(200).send(result);
+    } catch (error) {
+      next(new HttpException(400, error.message, request, response));
+    }
+  };
+
+  private getAllByState = async (
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) => {
+    try {
+      // TODO: Añadir DTO
+      const body = request.body;
+      const result = await this.tournamentService.getAllByState(body);
       response.status(200).send(result);
     } catch (error) {
       next(new HttpException(400, error.message, request, response));
