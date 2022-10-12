@@ -1,6 +1,6 @@
 {
   "name": "carstournaments-backend",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "scripts": {
     "start": "NODE_ENV=production nodemon",
     "start:dev": "NODE_ENV=development nodemon",
