@@ -14,11 +14,12 @@ const init = () => {
   connectToDB();
   appService.enablePromClient(app);
   appService.initStaticRoutes(app);
-  appService.initializeMiddlewares();
+  appService.initMiddlewares();
   initializeControllers(app);
   appService.initializeErrorHandling();
+  appService.initMonitor();
   if (env !== 'test') {
-    appService.initializeCrontab();
+    appService.initCrontab();
     app.listen(Config.port, () => {
       Logger.info(`[Server] CarsTournaments ${Config.env}`);
       appService.createCache();

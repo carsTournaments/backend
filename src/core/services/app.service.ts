@@ -10,6 +10,8 @@ import { Config } from '@core/config/app.config';
 import { Logger } from './logger.service';
 import { morganMiddleware } from '@middlewares';
 import { CacheService } from '@cache';
+import * as expressStatusMonitor from 'express-status-monitor';
+
 
 export class AppService {
   private app: express.Application;
@@ -61,7 +63,7 @@ export class AppService {
     );
   }
 
-  initializeMiddlewares() {
+  initMiddlewares() {
     const optionsCors = {
       origin: '*',
       exposedHeaders: [
@@ -76,6 +78,10 @@ export class AppService {
     this.app.use(methodOverride());
     this.app.use(morganMiddleware);
   }
+    
+    initMonitor() {
+        this.app.use(expressStatusMonitor.default());
+    }
 
   initializeErrorHandling() {
     process.on('unhandledRejection', (reason: string, p: Promise<any>) => {
@@ -87,7 +93,7 @@ export class AppService {
     });
   }
 
-  initializeCrontab() {
+  initCrontab() {
     this.crontabService.generateAutomaticsCrons();
   }
 
